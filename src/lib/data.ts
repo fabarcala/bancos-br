@@ -1,4 +1,9 @@
 import { Bank, KPIKey } from './types'
+
+export type KPIMode = 'quarterly' | 'ltm'
+
+// KPIs que se somam ao longo de 4 trimestres no modo L12M
+export const FLOW_KPIS: KPIKey[] = ['lucro_liquido_recorrente', 'margem_financeira', 'receita_servicos']
 import itauData from '../../data/itau.json'
 import bradescuData from '../../data/bradesco.json'
 import bbData from '../../data/bb.json'
@@ -97,4 +102,44 @@ export function getComparativeData(banks: Bank[], kpi: KPIKey) {
 
 export function getLastNPeriods(data: ReturnType<typeof getComparativeData>, n: number) {
   return data.slice(-n)
+}
+
+/** Retorna todos os períodos brutos disponíveis (mais recente primeiro) */
+export function getAllRawPeriods(banks: Bank[]): string[] {
+  const set = new Set<string>()
+  banks.forEach(bank => {
+    Object.values(bank.kpis).forEach(series => {
+      if (series) Object.keys(series).forEach(p => set.add(p))
+    })
+  })
+  return Array.from(set).sort().reverse()
+}
+
+/** Valor de um KPI num período específico */
+export function getValueForPeriod(bank: Bank, kpi: KPIKey, rawPeriod: string): number | null {
+  return bank.kpis[kpi]?.[rawPeriod] ?? null
+}
+
+/**
+ * Valor L12M: KPIs de fluxo somam os 4 trimestres terminando em rawPeriod.
+ * KPIs de ratio/stock retornam o valor do período.
+ */
+export function getLTMValue(bank: Bank, kpi: KPIKey, rawPeriod: string): number | null {
+  if (!FLOW_KPIS.includes(kpi)) {
+    return getValueForPeriod(bank, kpi, rawPeriod)
+  }
+  const series = bank.kpis[kpi]
+  if (!series) return null
+  const allPeriods = Object.keys(series).sort()
+  const idx = allPeriods.indexOf(rawPeriod)
+  if (idx < 0) return null
+  const last4 = allPeriods.slice(Math.max(0, idx - 3), idx + 1)
+  if (last4.length < 4) return null // dados insuficientes
+  let sum = 0
+  for (const p of last4) {
+    const v = series[p]
+    if (v == null) return null
+    sum += v
+  }
+  return sum
 }

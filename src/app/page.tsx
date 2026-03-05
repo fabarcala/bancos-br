@@ -1,11 +1,8 @@
 import { ALL_BANKS } from '@/lib/data'
-import { BankSummaryCard } from '@/components/KPICard'
 import { MultiLineChart } from '@/components/BankChart'
-import { KPIKey } from '@/lib/types'
+import { HomeClient } from '@/components/HomeClient'
 
 export default function Home() {
-  const kpisHome: KPIKey[] = ['lucro_liquido_recorrente', 'roe', 'indice_eficiencia', 'carteira_credito']
-
   return (
     <div>
       {/* Hero */}
@@ -21,15 +18,8 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Cards dos bancos */}
-      <section className="mb-12">
-        <h2 className="text-lg font-semibold text-slate-300 mb-4">Último trimestre disponível</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {ALL_BANKS.map(bank => (
-            <BankSummaryCard key={bank.ticker} bank={bank} kpis={kpisHome} />
-          ))}
-        </div>
-      </section>
+      {/* Cards dos bancos — com seleção de período e modo */}
+      <HomeClient />
 
       {/* Gráficos comparativos */}
       <section>
