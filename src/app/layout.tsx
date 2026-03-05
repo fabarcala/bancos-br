@@ -21,9 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <nav className="flex-1 flex items-center justify-center gap-6 text-sm text-slate-400">
               <Link href="/macro" className="hover:text-white transition-colors">Macro</Link>
-              <Link href="/" className="hover:text-white transition-colors">Comparativo</Link>
               <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
-              <Link href="/comparar" className="hover:text-white transition-colors">Comparar</Link>
             </nav>
           </div>
         </header>
