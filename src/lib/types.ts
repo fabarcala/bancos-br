@@ -124,14 +124,16 @@ export const BANK_COLORS: Record<string, string> = {
   ITUB4: '#FF6B00',
   BBDC4: '#CC0000',
   BBAS3: '#FFCC00',
-  BPAC11: '#1A1A2E',
+  BPAC11: '#818CF8',
   SANB11: '#EC0000',
+  BV: '#00A86B',
 }
 
 export const BANK_COLORS_LIGHT: Record<string, string> = {
   ITUB4: '#FFF0E6',
   BBDC4: '#FFE6E6',
   BBAS3: '#FFFBE6',
-  BPAC11: '#E6E6F0',
+  BPAC11: '#ECEEFF',
   SANB11: '#FFE6E6',
+  BV: '#E6F7F0',
 }

@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/" className="hover:text-white transition-colors">Comparativo</Link>
               <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
               <Link href="/comparar" className="hover:text-white transition-colors">Comparar</Link>
+              <Link href="/macro" className="hover:text-white transition-colors">Macro</Link>
             </nav>
           </div>
         </header>

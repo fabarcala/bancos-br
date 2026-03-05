@@ -4,6 +4,7 @@ import bradescuData from '../../data/bradesco.json'
 import bbData from '../../data/bb.json'
 import btgData from '../../data/btg.json'
 import santanderData from '../../data/santander.json'
+import bvData from '../../data/bv.json'
 
 export const ALL_BANKS: Bank[] = [
   itauData as Bank,
@@ -11,6 +12,7 @@ export const ALL_BANKS: Bank[] = [
   bbData as Bank,
   btgData as Bank,
   santanderData as Bank,
+  bvData as Bank,
 ]
 
 export function getBankByTicker(ticker: string): Bank | undefined {

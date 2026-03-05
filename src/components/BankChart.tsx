@@ -1,8 +1,9 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Legend, ReferenceLine
+  ResponsiveContainer, Legend
 } from 'recharts'
 import { Bank, KPIKey, KPI_CONFIG, BANK_COLORS } from '@/lib/types'
 import { getComparativeData, getLastNPeriods, formatValue } from '@/lib/data'
@@ -36,9 +37,14 @@ const CustomTooltip = ({ active, payload, label, kpi }: {
 }
 
 export function MultiLineChart({ banks, kpi, periods = 20, height = 320 }: MultiLineChartProps) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   const config = KPI_CONFIG[kpi]
   const allData = getComparativeData(banks, kpi)
   const data = getLastNPeriods(allData, periods)
+
+  if (!mounted) return <div style={{ height }} className="animate-pulse bg-slate-800/50 rounded-lg" />
 
   const formatYAxis = (value: number) => {
     if (config.format === 'percent') return `${(value * 100).toFixed(0)}%`
@@ -96,10 +102,15 @@ interface SingleBankChartProps {
 }
 
 export function SingleBankChart({ bank, kpi, periods = 20, height = 280, color }: SingleBankChartProps) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   const config = KPI_CONFIG[kpi]
   const bankColor = color || BANK_COLORS[bank.ticker] || '#6366f1'
   const allData = getComparativeData([bank], kpi)
   const data = getLastNPeriods(allData, periods)
+
+  if (!mounted) return <div style={{ height }} className="animate-pulse bg-slate-800/50 rounded-lg" />
 
   const formatYAxis = (value: number) => {
     if (config.format === 'percent') return `${(value * 100).toFixed(0)}%`
