@@ -29,19 +29,28 @@
         "etr_pct": null
       },
       "carteira": {
-        "total": 981.7
+        "total": 981.7,
+        "pessoas_fisicas": 414.1,
+        "cartao_credito": null,
+        "credito_pessoal": null,
+        "consignado": null,
+        "veiculos": null,
+        "imobiliario": null,
+        "mpmes": 214.9,
+        "grandes_empresas": 352.7,
+        "america_latina": null
       },
       "qualidade": {
         "npl_90d_total_pct": 4.0,
         "custo_credito_sobre_carteira_pct": 3.0
       },
       "capital": {
-        "patrimonio_referencia": null,
-        "cet1": null,
-        "nivel_i": null,
-        "at1": null,
-        "capital_nivel_ii": null,
-        "rwa_total": null,
+        "patrimonio_referencia": 149109,
+        "nivel_i": 124633,
+        "cet1": 105910,
+        "at1": 18723,
+        "capital_nivel_ii": 24476,
+        "rwa_total": 1008668,
         "basileia_pct": 14.8,
         "nivel_i_pct": 12.4,
         "cet1_pct": 10.5
@@ -74,19 +83,28 @@
         "etr_pct": null
       },
       "carteira": {
-        "total": 1005.1
+        "total": 1005.1,
+        "pessoas_fisicas": 432.9,
+        "cartao_credito": null,
+        "credito_pessoal": null,
+        "consignado": null,
+        "veiculos": null,
+        "imobiliario": null,
+        "mpmes": 222.5,
+        "grandes_empresas": 349.8,
+        "america_latina": null
       },
       "qualidade": {
         "npl_90d_total_pct": 4.3,
         "custo_credito_sobre_carteira_pct": 3.0
       },
       "capital": {
-        "patrimonio_referencia": null,
-        "cet1": null,
-        "nivel_i": null,
-        "at1": null,
-        "capital_nivel_ii": null,
-        "rwa_total": null,
+        "patrimonio_referencia": 160025,
+        "nivel_i": 134814,
+        "cet1": 114988,
+        "at1": 19826,
+        "capital_nivel_ii": 25211,
+        "rwa_total": 1035931,
         "basileia_pct": 15.4,
         "nivel_i_pct": 13.0,
         "cet1_pct": 11.1
@@ -119,19 +137,28 @@
         "etr_pct": null
       },
       "carteira": {
-        "total": 1018.0
+        "total": 1018.4,
+        "pessoas_fisicas": 442.4,
+        "cartao_credito": null,
+        "credito_pessoal": null,
+        "consignado": null,
+        "veiculos": null,
+        "imobiliario": null,
+        "mpmes": 230.5,
+        "grandes_empresas": 345.5,
+        "america_latina": null
       },
       "qualidade": {
         "npl_90d_total_pct": 4.1,
         "custo_credito_sobre_carteira_pct": 3.2
       },
       "capital": {
-        "patrimonio_referencia": null,
-        "cet1": null,
-        "nivel_i": null,
-        "at1": null,
-        "capital_nivel_ii": null,
-        "rwa_total": null,
+        "patrimonio_referencia": 162761,
+        "nivel_i": 136588,
+        "cet1": 116432,
+        "at1": 20156,
+        "capital_nivel_ii": 26173,
+        "rwa_total": 1048936,
         "basileia_pct": 15.5,
         "nivel_i_pct": 13.0,
         "cet1_pct": 11.1
@@ -164,19 +191,28 @@
         "etr_pct": null
       },
       "carteira": {
-        "total": 1034.2
+        "total": 1034.2,
+        "pessoas_fisicas": 451.6,
+        "cartao_credito": null,
+        "credito_pessoal": null,
+        "consignado": null,
+        "veiculos": null,
+        "imobiliario": null,
+        "mpmes": 241.1,
+        "grandes_empresas": 341.5,
+        "america_latina": null
       },
       "qualidade": {
         "npl_90d_total_pct": 4.1,
         "custo_credito_sobre_carteira_pct": 3.3
       },
       "capital": {
-        "patrimonio_referencia": null,
-        "cet1": null,
-        "nivel_i": null,
-        "at1": null,
-        "capital_nivel_ii": null,
-        "rwa_total": null,
+        "patrimonio_referencia": 169228,
+        "nivel_i": 142578,
+        "cet1": 121681,
+        "at1": 20897,
+        "capital_nivel_ii": 26650,
+        "rwa_total": 1067379,
         "basileia_pct": 15.9,
         "nivel_i_pct": 13.4,
         "cet1_pct": 11.4
@@ -209,19 +245,28 @@
         "etr_pct": null
       },
       "carteira": {
-        "total": 1089.2
+        "total": 1089.2,
+        "pessoas_fisicas": 466.5,
+        "cartao_credito": null,
+        "credito_pessoal": null,
+        "consignado": null,
+        "veiculos": null,
+        "imobiliario": null,
+        "mpmes": 260.6,
+        "grandes_empresas": 362.1,
+        "america_latina": null
       },
       "qualidade": {
         "npl_90d_total_pct": 4.1,
         "custo_credito_sobre_carteira_pct": 3.2
       },
       "capital": {
-        "patrimonio_referencia": null,
-        "cet1": null,
-        "nivel_i": null,
-        "at1": null,
-        "capital_nivel_ii": null,
-        "rwa_total": null,
+        "patrimonio_referencia": 174969,
+        "nivel_i": 145844,
+        "cet1": 124204,
+        "at1": 21640,
+        "capital_nivel_ii": 29125,
+        "rwa_total": 1108962,
         "basileia_pct": 15.8,
         "nivel_i_pct": 13.2,
         "cet1_pct": 11.2
