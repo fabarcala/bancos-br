@@ -1,0 +1,315 @@
+{
+  "banco": "ITAÚ UNIBANCO",
+  "ticker": "ITUB4",
+  "moeda": "BRL",
+  "unidade_dre": "R$ milhões",
+  "unidade_carteira": "R$ bilhões",
+  "nota_npl": "Até 1T25: metodologia antiga (sem TVM). A partir de 2T25: inclui TVM e garantias financeiras prestadas (Res. 4.966). 4T24 = 2,0% sob nova metodologia (conforme divulgado no 4T25).",
+  "trimestres": {
+    "4T24": {
+      "dre": {
+        "receitas_totais": 44098,
+        "margem_financeira": 29388,
+        "margem_financeira_clientes": 28484,
+        "margem_financeira_mercado": 904,
+        "receitas_prestacao_servicos": 11697,
+        "resultado_seguros_prev_cap": 3013,
+        "custo_credito": -8643,
+        "despesa_perda_esperada": -9562,
+        "descontos_concedidos": -615,
+        "recuperacao_creditos_baixados": 1534,
+        "despesas_sinistros": -400,
+        "outras_despesas_operacionais": -19368,
+        "desp_nao_decorrentes_juros": -16707,
+        "desp_tributarias_iss_pis_cofins": -2647,
+        "desp_comercializacao_seguros": -14,
+        "resultado_antes_tributacao": 15687,
+        "ir_cs": -4475,
+        "participacoes_minoritarias": -328,
+        "resultado_recorrente_gerencial": 10884
+      },
+      "indicadores": {
+        "roae_consolidado_pct": 22.1,
+        "roaa_pct": 1.4,
+        "indice_eficiencia_pct": 40.7,
+        "nim_clientes_pct": 8.6,
+        "etr_pct": 28.5
+      },
+      "carteira": {
+        "total": 1406.4,
+        "pessoas_fisicas": 444.8,
+        "cartao_credito": 142.2,
+        "credito_pessoal": 65.9,
+        "consignado": 74.4,
+        "veiculos": 36.5,
+        "imobiliario": 125.7,
+        "mpmes": 278.8,
+        "grandes_empresas": 433.2,
+        "america_latina": 249.6,
+        "total_brasil": 1156.8
+      },
+      "qualidade": {
+        "npl_90d_total_pct": 2.0,
+        "custo_credito_sobre_carteira_pct": 2.5
+      },
+      "capital": {
+        "cet1": 188265,
+        "nivel_i": 206196,
+        "at1": 17931,
+        "capital_nivel_ii": 21406,
+        "patrimonio_referencia": 227602,
+        "rwa_total": 1379056,
+        "rwa_credito": 1223040,
+        "rwa_operacional": 112827,
+        "rwa_mercado": 43189,
+        "basileia_pct": 16.5,
+        "nivel_i_pct": 15.0,
+        "cet1_pct": 13.7
+      }
+    },
+    "1T25": {
+      "dre": {
+        "receitas_totais": 44537,
+        "margem_financeira": 30322,
+        "margem_financeira_clientes": 29399,
+        "margem_financeira_mercado": 923,
+        "receitas_prestacao_servicos": 11232,
+        "resultado_seguros_prev_cap": 2983,
+        "custo_credito": -8976,
+        "despesa_perda_esperada": -9494,
+        "descontos_concedidos": -714,
+        "recuperacao_creditos_baixados": 1233,
+        "despesas_sinistros": -389,
+        "outras_despesas_operacionais": -18466,
+        "desp_nao_decorrentes_juros": -15796,
+        "desp_tributarias_iss_pis_cofins": -2664,
+        "desp_comercializacao_seguros": -6,
+        "resultado_antes_tributacao": 16706,
+        "ir_cs": -5259,
+        "participacoes_minoritarias": -319,
+        "resultado_recorrente_gerencial": 11128
+      },
+      "indicadores": {
+        "roae_consolidado_pct": 22.5,
+        "roaa_pct": 1.5,
+        "indice_eficiencia_pct": 38.1,
+        "nim_clientes_pct": 8.9,
+        "etr_pct": 31.5
+      },
+      "carteira": {
+        "total": 1383.1,
+        "pessoas_fisicas": 448.8,
+        "cartao_credito": 138.9,
+        "credito_pessoal": 67.3,
+        "consignado": 74.1,
+        "veiculos": 36.8,
+        "imobiliario": 131.6,
+        "mpmes": 273.2,
+        "grandes_empresas": 425.3,
+        "america_latina": 235.8,
+        "total_brasil": 1147.3
+      },
+      "qualidade": {
+        "npl_90d_total_pct": 2.3,
+        "custo_credito_sobre_carteira_pct": 2.7
+      },
+      "capital": {
+        "cet1": 180611,
+        "nivel_i": 202344,
+        "at1": 21733,
+        "capital_nivel_ii": 21748,
+        "patrimonio_referencia": 224092,
+        "rwa_total": 1430630,
+        "rwa_credito": 1231292,
+        "rwa_operacional": 141782,
+        "rwa_mercado": 57556,
+        "basileia_pct": 15.7,
+        "nivel_i_pct": 14.1,
+        "cet1_pct": 12.6
+      }
+    },
+    "2T25": {
+      "dre": {
+        "receitas_totais": 45728,
+        "margem_financeira": 31177,
+        "margem_financeira_clientes": 30320,
+        "margem_financeira_mercado": 858,
+        "receitas_prestacao_servicos": 11343,
+        "resultado_seguros_prev_cap": 3207,
+        "custo_credito": -9093,
+        "despesa_perda_esperada": -9664,
+        "descontos_concedidos": -708,
+        "recuperacao_creditos_baixados": 1280,
+        "despesas_sinistros": -386,
+        "outras_despesas_operacionais": -19284,
+        "desp_nao_decorrentes_juros": -16492,
+        "desp_tributarias_iss_pis_cofins": -2785,
+        "desp_comercializacao_seguros": -6,
+        "resultado_antes_tributacao": 16966,
+        "ir_cs": -5151,
+        "participacoes_minoritarias": -307,
+        "resultado_recorrente_gerencial": 11508
+      },
+      "indicadores": {
+        "roae_consolidado_pct": 23.3,
+        "roaa_pct": 1.6,
+        "indice_eficiencia_pct": 38.8,
+        "nim_clientes_pct": 9.2,
+        "etr_pct": 30.4
+      },
+      "carteira": {
+        "total": 1389.1,
+        "pessoas_fisicas": 451.9,
+        "cartao_credito": 141.1,
+        "credito_pessoal": 67.4,
+        "consignado": 72.8,
+        "veiculos": 36.2,
+        "imobiliario": 134.4,
+        "mpmes": 275.4,
+        "grandes_empresas": 431.4,
+        "america_latina": 230.4,
+        "total_brasil": 1158.7
+      },
+      "qualidade": {
+        "npl_90d_total_pct": 1.9,
+        "custo_credito_sobre_carteira_pct": 2.7
+      },
+      "capital": {
+        "cet1": 188389,
+        "nivel_i": 215381,
+        "at1": 26992,
+        "capital_nivel_ii": 22073,
+        "patrimonio_referencia": 237454,
+        "rwa_total": 1436344,
+        "rwa_credito": 1236495,
+        "rwa_operacional": 141782,
+        "rwa_mercado": 58067,
+        "basileia_pct": 16.5,
+        "nivel_i_pct": 14.6,
+        "cet1_pct": 13.1
+      }
+    },
+    "3T25": {
+      "dre": {
+        "receitas_totais": 46567,
+        "margem_financeira": 31382,
+        "margem_financeira_clientes": 30479,
+        "margem_financeira_mercado": 902,
+        "receitas_prestacao_servicos": 11755,
+        "resultado_seguros_prev_cap": 3430,
+        "custo_credito": -9145,
+        "despesa_perda_esperada": -9780,
+        "descontos_concedidos": -714,
+        "recuperacao_creditos_baixados": 1348,
+        "despesas_sinistros": -449,
+        "outras_despesas_operacionais": -19858,
+        "desp_nao_decorrentes_juros": -17150,
+        "desp_tributarias_iss_pis_cofins": -2703,
+        "desp_comercializacao_seguros": -5,
+        "resultado_antes_tributacao": 17116,
+        "ir_cs": -4940,
+        "participacoes_minoritarias": -300,
+        "resultado_recorrente_gerencial": 11876
+      },
+      "indicadores": {
+        "roae_consolidado_pct": 23.3,
+        "roaa_pct": 1.6,
+        "indice_eficiencia_pct": 39.5,
+        "nim_clientes_pct": 9.0,
+        "etr_pct": 28.9
+      },
+      "carteira": {
+        "total": 1402.0,
+        "pessoas_fisicas": 456.4,
+        "cartao_credito": 142.2,
+        "credito_pessoal": 68.4,
+        "consignado": 72.4,
+        "veiculos": 36.3,
+        "imobiliario": 137.1,
+        "mpmes": 278.4,
+        "grandes_empresas": 437.7,
+        "america_latina": 229.5,
+        "total_brasil": 1172.5
+      },
+      "qualidade": {
+        "npl_90d_total_pct": 1.9,
+        "custo_credito_sobre_carteira_pct": 2.6
+      },
+      "capital": {
+        "cet1": 195917,
+        "nivel_i": 215466,
+        "at1": 19549,
+        "capital_nivel_ii": 22964,
+        "patrimonio_referencia": 238430,
+        "rwa_total": 1454242,
+        "rwa_credito": 1249471,
+        "rwa_operacional": 143006,
+        "rwa_mercado": 61765,
+        "basileia_pct": 16.4,
+        "nivel_i_pct": 14.8,
+        "cet1_pct": 13.5
+      }
+    },
+    "4T25": {
+      "dre": {
+        "receitas_totais": 47560,
+        "margem_financeira": 31527,
+        "margem_financeira_clientes": 30930,
+        "margem_financeira_mercado": 597,
+        "receitas_prestacao_servicos": 12560,
+        "resultado_seguros_prev_cap": 3473,
+        "custo_credito": -9397,
+        "despesa_perda_esperada": -10031,
+        "descontos_concedidos": -882,
+        "recuperacao_creditos_baixados": 1516,
+        "despesas_sinistros": -435,
+        "outras_despesas_operacionais": -19948,
+        "desp_nao_decorrentes_juros": -17324,
+        "desp_tributarias_iss_pis_cofins": -2619,
+        "desp_comercializacao_seguros": -5,
+        "resultado_antes_tributacao": 17781,
+        "ir_cs": -5046,
+        "participacoes_minoritarias": -417,
+        "resultado_recorrente_gerencial": 12317
+      },
+      "indicadores": {
+        "roae_consolidado_pct": 24.4,
+        "roaa_pct": 1.6,
+        "indice_eficiencia_pct": 38.9,
+        "nim_clientes_pct": 8.9,
+        "etr_pct": 28.4
+      },
+      "carteira": {
+        "total": 1490.8,
+        "pessoas_fisicas": 474.3,
+        "cartao_credito": 153.5,
+        "credito_pessoal": 67.4,
+        "consignado": 75.3,
+        "veiculos": 36.3,
+        "imobiliario": 141.7,
+        "mpmes": 303.1,
+        "grandes_empresas": 455.9,
+        "america_latina": 257.6,
+        "total_brasil": 1233.2
+      },
+      "qualidade": {
+        "npl_90d_total_pct": 1.9,
+        "custo_credito_sobre_carteira_pct": 2.6
+      },
+      "capital": {
+        "cet1": 185595,
+        "nivel_i": 208161,
+        "at1": 22566,
+        "capital_nivel_ii": 20428,
+        "patrimonio_referencia": 228589,
+        "rwa_total": 1505475,
+        "rwa_credito": 1312221,
+        "rwa_operacional": 143006,
+        "rwa_mercado": 50248,
+        "basileia_pct": 15.2,
+        "nivel_i_pct": 13.8,
+        "cet1_pct": 12.3
+      }
+    }
+  }
+}

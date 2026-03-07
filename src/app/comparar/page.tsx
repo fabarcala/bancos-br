@@ -1,45 +1,28 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import ComparativoTable from '@/components/ComparativoTable'
+import ItauComparativoTable from '@/components/ItauComparativoTable'
 
 export const revalidate = 3600
 
-const BANKS = ['itau', 'bradesco', 'santander', 'bb', 'bv', 'btg']
-
-const BANK_META: Record<string, { name: string; ticker: string }> = {
-  itau:     { name: 'Itaú',            ticker: 'ITUB4'  },
-  bradesco: { name: 'Bradesco',        ticker: 'BBDC4'  },
-  santander:{ name: 'Santander',       ticker: 'SANB11' },
-  bb:       { name: 'Banco do Brasil', ticker: 'BBAS3'  },
-  bv:       { name: 'BV',             ticker: 'BV'     },
-  btg:      { name: 'BTG Pactual',    ticker: 'BPAC11' },
-}
-
-function loadBank(ticker: string) {
-  const path = join(process.cwd(), 'data', `${ticker}.json`)
-  return JSON.parse(readFileSync(path, 'utf-8'))
-}
-
 export default function ComparativoPage() {
-  const banksData = BANKS.map(ticker => {
-    const raw = loadBank(ticker)
-    return {
-      ticker,
-      name: BANK_META[ticker].name,
-      stockTicker: BANK_META[ticker].ticker,
-      kpis: raw.kpis as Record<string, Record<string, number>>,
-    }
-  })
+  const raw = readFileSync(join(process.cwd(), 'data', 'itau_historico.json'), 'utf-8')
+  const data = JSON.parse(raw)
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-white">
-      <div className="max-w-[1800px] mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-white mb-1">Comparativo</h1>
-        <p className="text-slate-400 text-sm mb-6">
-          4T25 vs 3T25 (ΔTri) · 4T25 vs 4T24 (ΔYoY)
-        </p>
-        <ComparativoTable banks={banksData} />
+    <main className="min-h-screen bg-gray-950 text-white">
+      <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+
+        {/* Header */}
+        <div>
+          <h1 className="text-2xl font-bold text-white">Comparativo de Resultados</h1>
+          <p className="text-gray-400 text-sm mt-1">
+            Selecione os períodos para comparar. Δ mostra a variação entre os períodos selecionados.
+            L12M = soma (DRE) ou último valor (balanço/indicadores) dos últimos 4 trimestres disponíveis.
+          </p>
+        </div>
+
+        <ItauComparativoTable data={data} />
       </div>
-    </div>
+    </main>
   )
 }
