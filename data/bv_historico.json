@@ -1,0 +1,231 @@
+{
+  "banco": "BV",
+  "ticker": "BVMF3",
+  "trimestres": {
+    "4T24": {
+      "dre": {
+        "receitas_totais": 3214,
+        "margem_financeira": 2519,
+        "margem_financeira_clientes": 2367,
+        "margem_financeira_mercado": 152,
+        "receitas_prestacao_servicos": 695,
+        "resultado_seguros_prev_cap": null,
+        "custo_credito": -776,
+        "despesa_perda_esperada": null,
+        "descontos_concedidos": null,
+        "recuperacao_creditos_baixados": null,
+        "outras_despesas_operacionais": -1963,
+        "desp_nao_decorrentes_juros": -1015,
+        "desp_tributarias_iss_pis_cofins": -185,
+        "ir_cs": 82,
+        "participacoes_minoritarias": -16,
+        "resultado_recorrente_gerencial": 542
+      },
+      "indicadores": {
+        "roae_consolidado_pct": null,
+        "roaa_pct": null,
+        "indice_eficiencia_pct": null,
+        "nim_clientes_pct": null,
+        "etr_pct": null
+      },
+      "carteira": {
+        "total": null
+      },
+      "qualidade": {
+        "npl_90d_total_pct": null,
+        "custo_credito_sobre_carteira_pct": null
+      },
+      "capital": {
+        "patrimonio_referencia": null,
+        "cet1": null,
+        "nivel_i": null,
+        "at1": null,
+        "capital_nivel_ii": null,
+        "rwa_total": null,
+        "basileia_pct": null,
+        "nivel_i_pct": null,
+        "cet1_pct": null
+      }
+    },
+    "1T25": {
+      "dre": {
+        "receitas_totais": 2973,
+        "margem_financeira": 2356,
+        "margem_financeira_clientes": 2038,
+        "margem_financeira_mercado": 318,
+        "receitas_prestacao_servicos": 618,
+        "resultado_seguros_prev_cap": null,
+        "custo_credito": -865,
+        "despesa_perda_esperada": null,
+        "descontos_concedidos": null,
+        "recuperacao_creditos_baixados": null,
+        "outras_despesas_operacionais": -1364,
+        "desp_nao_decorrentes_juros": -915,
+        "desp_tributarias_iss_pis_cofins": -199,
+        "ir_cs": -244,
+        "participacoes_minoritarias": -19,
+        "resultado_recorrente_gerencial": 480
+      },
+      "indicadores": {
+        "roae_consolidado_pct": null,
+        "roaa_pct": null,
+        "indice_eficiencia_pct": null,
+        "nim_clientes_pct": null,
+        "etr_pct": null
+      },
+      "carteira": {
+        "total": null
+      },
+      "qualidade": {
+        "npl_90d_total_pct": null,
+        "custo_credito_sobre_carteira_pct": null
+      },
+      "capital": {
+        "patrimonio_referencia": null,
+        "cet1": null,
+        "nivel_i": null,
+        "at1": null,
+        "capital_nivel_ii": null,
+        "rwa_total": null,
+        "basileia_pct": null,
+        "nivel_i_pct": null,
+        "cet1_pct": null
+      }
+    },
+    "2T25": {
+      "dre": {
+        "receitas_totais": 2885,
+        "margem_financeira": 2329,
+        "margem_financeira_clientes": 2097,
+        "margem_financeira_mercado": 232,
+        "receitas_prestacao_servicos": 556,
+        "resultado_seguros_prev_cap": null,
+        "custo_credito": -924,
+        "despesa_perda_esperada": null,
+        "descontos_concedidos": null,
+        "recuperacao_creditos_baixados": null,
+        "outras_despesas_operacionais": -1331,
+        "desp_nao_decorrentes_juros": -907,
+        "desp_tributarias_iss_pis_cofins": -187,
+        "ir_cs": -154,
+        "participacoes_minoritarias": -17,
+        "resultado_recorrente_gerencial": 459
+      },
+      "indicadores": {
+        "roae_consolidado_pct": null,
+        "roaa_pct": null,
+        "indice_eficiencia_pct": null,
+        "nim_clientes_pct": null,
+        "etr_pct": null
+      },
+      "carteira": {
+        "total": null
+      },
+      "qualidade": {
+        "npl_90d_total_pct": null,
+        "custo_credito_sobre_carteira_pct": null
+      },
+      "capital": {
+        "patrimonio_referencia": null,
+        "cet1": null,
+        "nivel_i": null,
+        "at1": null,
+        "capital_nivel_ii": null,
+        "rwa_total": null,
+        "basileia_pct": null,
+        "nivel_i_pct": null,
+        "cet1_pct": null
+      }
+    },
+    "3T25": {
+      "dre": {
+        "receitas_totais": 2919,
+        "margem_financeira": 2295,
+        "margem_financeira_clientes": 2051,
+        "margem_financeira_mercado": 244,
+        "receitas_prestacao_servicos": 624,
+        "resultado_seguros_prev_cap": null,
+        "custo_credito": -880,
+        "despesa_perda_esperada": null,
+        "descontos_concedidos": null,
+        "recuperacao_creditos_baixados": null,
+        "outras_despesas_operacionais": -1509,
+        "desp_nao_decorrentes_juros": -919,
+        "desp_tributarias_iss_pis_cofins": -116,
+        "ir_cs": -44,
+        "participacoes_minoritarias": -25,
+        "resultado_recorrente_gerencial": 461
+      },
+      "indicadores": {
+        "roae_consolidado_pct": null,
+        "roaa_pct": null,
+        "indice_eficiencia_pct": null,
+        "nim_clientes_pct": null,
+        "etr_pct": null
+      },
+      "carteira": {
+        "total": null
+      },
+      "qualidade": {
+        "npl_90d_total_pct": null,
+        "custo_credito_sobre_carteira_pct": null
+      },
+      "capital": {
+        "patrimonio_referencia": null,
+        "cet1": null,
+        "nivel_i": null,
+        "at1": null,
+        "capital_nivel_ii": null,
+        "rwa_total": null,
+        "basileia_pct": null,
+        "nivel_i_pct": null,
+        "cet1_pct": null
+      }
+    },
+    "4T25": {
+      "dre": {
+        "receitas_totais": 3136,
+        "margem_financeira": 2304,
+        "margem_financeira_clientes": 2131,
+        "margem_financeira_mercado": 172,
+        "receitas_prestacao_servicos": 832,
+        "resultado_seguros_prev_cap": null,
+        "custo_credito": -1029,
+        "despesa_perda_esperada": null,
+        "descontos_concedidos": null,
+        "recuperacao_creditos_baixados": null,
+        "outras_despesas_operacionais": -1701,
+        "desp_nao_decorrentes_juros": -1072,
+        "desp_tributarias_iss_pis_cofins": -75,
+        "ir_cs": 64,
+        "participacoes_minoritarias": -6,
+        "resultado_recorrente_gerencial": 465
+      },
+      "indicadores": {
+        "roae_consolidado_pct": null,
+        "roaa_pct": null,
+        "indice_eficiencia_pct": null,
+        "nim_clientes_pct": null,
+        "etr_pct": null
+      },
+      "carteira": {
+        "total": null
+      },
+      "qualidade": {
+        "npl_90d_total_pct": null,
+        "custo_credito_sobre_carteira_pct": null
+      },
+      "capital": {
+        "patrimonio_referencia": null,
+        "cet1": null,
+        "nivel_i": null,
+        "at1": null,
+        "capital_nivel_ii": null,
+        "rwa_total": null,
+        "basileia_pct": null,
+        "nivel_i_pct": null,
+        "cet1_pct": null
+      }
+    }
+  }
+}

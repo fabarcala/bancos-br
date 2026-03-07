@@ -1,25 +1,34 @@
-import { HomeClient } from '@/components/HomeClient'
-import { ChartSection } from '@/components/ChartSection'
+import { readFileSync } from 'fs'
+import { join } from 'path'
+import BancosComparativo from '@/components/BancosComparativo'
+
+export const revalidate = 3600
+
+function loadBank(filename: string) {
+  const path = join(process.cwd(), 'data', filename)
+  return JSON.parse(readFileSync(path, 'utf-8'))
+}
 
 export default function BancosPage() {
+  const banks = [
+    loadBank('itau_historico.json'),
+    loadBank('bradesco_historico.json'),
+    loadBank('santander_historico.json'),
+    loadBank('bb_historico.json'),
+    loadBank('bv_historico.json'),
+  ]
+
   return (
-    <div>
-      {/* Hero */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-2">Bancos</h1>
-        <p className="text-slate-400 text-lg">
-          Resultados gerenciais e indicadores dos principais bancos listados na B3
-        </p>
-        <p className="text-slate-500 text-sm mt-1">
-          Itaú · Bradesco · Banco do Brasil · BTG Pactual · Santander Brasil — dados até 4T25
-        </p>
+    <main className="min-h-screen bg-gray-950 text-white">
+      <div className="max-w-full px-4 py-8 space-y-6">
+        <div>
+          <h1 className="text-2xl font-bold text-white">Comparativo de Resultados — Bancos BR</h1>
+          <p className="text-gray-400 text-sm mt-1">
+            Toggle <strong>Trimestral</strong> para comparar dois trimestres · <strong>LTM</strong> para comparar dois períodos de 12 meses acumulados · Δ% mostra a variação entre os períodos.
+          </p>
+        </div>
+        <BancosComparativo banks={banks} />
       </div>
-
-      {/* Cards com seleção de período e modo L12M */}
-      <HomeClient />
-
-      {/* Gráficos históricos comparativos */}
-      <ChartSection />
-    </div>
+    </main>
   )
 }

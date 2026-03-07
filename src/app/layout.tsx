@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen bg-[#0f1117] text-slate-100">
+      <body className="min-h-screen bg-gray-950 text-slate-100">
         {/* Header */}
-        <header className="border-b border-slate-800 bg-[#0f1117]/95 backdrop-blur sticky top-0 z-50">
+        <header className="border-b border-slate-800 bg-gray-950/95 backdrop-blur sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center">
             <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
               <BarChart3 className="w-5 h-5 text-blue-400" />
@@ -23,13 +23,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/macro" className="hover:text-white transition-colors">Macro</Link>
               <Link href="/setorial" className="hover:text-white transition-colors">Setorial</Link>
               <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
-              <Link href="/comparar" className="hover:text-white transition-colors">Comparar</Link>
             </nav>
           </div>
         </header>
 
         {/* Main */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <main className="max-w-full px-4 sm:px-6 py-8">
           {children}
         </main>
 
