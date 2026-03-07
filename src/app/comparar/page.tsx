@@ -4,15 +4,15 @@ import ComparativoTable from '@/components/ComparativoTable'
 
 export const revalidate = 3600
 
-const BANKS = ['bv', 'santander', 'bradesco', 'itau', 'bb', 'btg']
+const BANKS = ['itau', 'bradesco', 'santander', 'bb', 'bv', 'btg']
 
 const BANK_META: Record<string, { name: string; ticker: string }> = {
-  bv:       { name: 'BV',          ticker: 'BV'     },
-  santander:{ name: 'Santander',   ticker: 'SANB11' },
-  bradesco: { name: 'Bradesco',    ticker: 'BBDC4'  },
-  itau:     { name: 'Itaú',        ticker: 'ITUB4'  },
+  itau:     { name: 'Itaú',            ticker: 'ITUB4'  },
+  bradesco: { name: 'Bradesco',        ticker: 'BBDC4'  },
+  santander:{ name: 'Santander',       ticker: 'SANB11' },
   bb:       { name: 'Banco do Brasil', ticker: 'BBAS3'  },
-  btg:      { name: 'BTG Pactual', ticker: 'BPAC11' },
+  bv:       { name: 'BV',             ticker: 'BV'     },
+  btg:      { name: 'BTG Pactual',    ticker: 'BPAC11' },
 }
 
 function loadBank(ticker: string) {
