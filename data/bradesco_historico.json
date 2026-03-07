@@ -22,18 +22,18 @@
         "resultado_recorrente_gerencial": 5402
       },
       "indicadores": {
-        "roae_consolidado_pct": null,
+        "roae_consolidado_pct": 12.7,
         "roaa_pct": null,
-        "indice_eficiencia_pct": null,
-        "nim_clientes_pct": null,
+        "indice_eficiencia_pct": 53.2,
+        "nim_clientes_pct": 8.4,
         "etr_pct": null
       },
       "carteira": {
-        "total": null
+        "total": 981.7
       },
       "qualidade": {
-        "npl_90d_total_pct": null,
-        "custo_credito_sobre_carteira_pct": null
+        "npl_90d_total_pct": 4.0,
+        "custo_credito_sobre_carteira_pct": 3.0
       },
       "capital": {
         "patrimonio_referencia": null,
@@ -42,9 +42,9 @@
         "at1": null,
         "capital_nivel_ii": null,
         "rwa_total": null,
-        "basileia_pct": null,
-        "nivel_i_pct": null,
-        "cet1_pct": null
+        "basileia_pct": 14.8,
+        "nivel_i_pct": 12.4,
+        "cet1_pct": 10.5
       }
     },
     "1T25": {
@@ -67,18 +67,18 @@
         "resultado_recorrente_gerencial": 5864
       },
       "indicadores": {
-        "roae_consolidado_pct": null,
+        "roae_consolidado_pct": 14.4,
         "roaa_pct": null,
-        "indice_eficiencia_pct": null,
-        "nim_clientes_pct": null,
+        "indice_eficiencia_pct": 49.7,
+        "nim_clientes_pct": 8.6,
         "etr_pct": null
       },
       "carteira": {
         "total": 1005.1
       },
       "qualidade": {
-        "npl_90d_total_pct": null,
-        "custo_credito_sobre_carteira_pct": null
+        "npl_90d_total_pct": 4.3,
+        "custo_credito_sobre_carteira_pct": 3.0
       },
       "capital": {
         "patrimonio_referencia": null,
@@ -87,9 +87,9 @@
         "at1": null,
         "capital_nivel_ii": null,
         "rwa_total": null,
-        "basileia_pct": null,
-        "nivel_i_pct": null,
-        "cet1_pct": null
+        "basileia_pct": 15.4,
+        "nivel_i_pct": 13.0,
+        "cet1_pct": 11.1
       }
     },
     "2T25": {
@@ -112,18 +112,18 @@
         "resultado_recorrente_gerencial": 6067
       },
       "indicadores": {
-        "roae_consolidado_pct": null,
+        "roae_consolidado_pct": 14.6,
         "roaa_pct": null,
-        "indice_eficiencia_pct": null,
-        "nim_clientes_pct": null,
+        "indice_eficiencia_pct": 49.9,
+        "nim_clientes_pct": 8.8,
         "etr_pct": null
       },
       "carteira": {
-        "total": 1018.4
+        "total": 1018.0
       },
       "qualidade": {
-        "npl_90d_total_pct": null,
-        "custo_credito_sobre_carteira_pct": null
+        "npl_90d_total_pct": 4.1,
+        "custo_credito_sobre_carteira_pct": 3.2
       },
       "capital": {
         "patrimonio_referencia": null,
@@ -132,9 +132,9 @@
         "at1": null,
         "capital_nivel_ii": null,
         "rwa_total": null,
-        "basileia_pct": null,
-        "nivel_i_pct": null,
-        "cet1_pct": null
+        "basileia_pct": 15.5,
+        "nivel_i_pct": 13.0,
+        "cet1_pct": 11.1
       }
     },
     "3T25": {
@@ -157,18 +157,18 @@
         "resultado_recorrente_gerencial": 6205
       },
       "indicadores": {
-        "roae_consolidado_pct": null,
+        "roae_consolidado_pct": 14.7,
         "roaa_pct": null,
-        "indice_eficiencia_pct": null,
-        "nim_clientes_pct": null,
+        "indice_eficiencia_pct": 50.1,
+        "nim_clientes_pct": 9.0,
         "etr_pct": null
       },
       "carteira": {
         "total": 1034.2
       },
       "qualidade": {
-        "npl_90d_total_pct": null,
-        "custo_credito_sobre_carteira_pct": null
+        "npl_90d_total_pct": 4.1,
+        "custo_credito_sobre_carteira_pct": 3.3
       },
       "capital": {
         "patrimonio_referencia": null,
@@ -177,9 +177,9 @@
         "at1": null,
         "capital_nivel_ii": null,
         "rwa_total": null,
-        "basileia_pct": null,
-        "nivel_i_pct": null,
-        "cet1_pct": null
+        "basileia_pct": 15.9,
+        "nivel_i_pct": 13.4,
+        "cet1_pct": 11.4
       }
     },
     "4T25": {
@@ -202,18 +202,18 @@
         "resultado_recorrente_gerencial": 6516
       },
       "indicadores": {
-        "roae_consolidado_pct": null,
+        "roae_consolidado_pct": 15.2,
         "roaa_pct": null,
-        "indice_eficiencia_pct": null,
-        "nim_clientes_pct": null,
+        "indice_eficiencia_pct": 50.1,
+        "nim_clientes_pct": 9.0,
         "etr_pct": null
       },
       "carteira": {
         "total": 1089.2
       },
       "qualidade": {
-        "npl_90d_total_pct": null,
-        "custo_credito_sobre_carteira_pct": null
+        "npl_90d_total_pct": 4.1,
+        "custo_credito_sobre_carteira_pct": 3.2
       },
       "capital": {
         "patrimonio_referencia": null,
@@ -222,9 +222,9 @@
         "at1": null,
         "capital_nivel_ii": null,
         "rwa_total": null,
-        "basileia_pct": null,
-        "nivel_i_pct": null,
-        "cet1_pct": null
+        "basileia_pct": 15.8,
+        "nivel_i_pct": 13.2,
+        "cet1_pct": 11.2
       }
     }
   }
