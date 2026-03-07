@@ -238,45 +238,43 @@ export default function BancosComparativo({ banks }: Props) {
       <div className="overflow-x-auto rounded-xl border border-gray-700">
         <table className="text-sm border-collapse" style={{ minWidth: `${280 + banks.length * 310}px` }}>
           <thead>
+            {/* Row 1: bank names */}
             <tr className="bg-gray-800 border-b border-gray-700">
-              {/* Sticky label col */}
-              <th className="sticky left-0 z-20 bg-gray-800 text-left px-4 py-3 text-gray-400 font-medium"
+              <th className="sticky left-0 z-20 bg-gray-800 text-left px-4 py-2 text-xs text-gray-500 font-normal"
+                  style={{ minWidth: '260px', width: '260px' }}>
+                R$ milhões (exceto onde indicado)
+              </th>
+              {banks.map(bank => (
+                <th key={`${bank.ticker}-name`} colSpan={3}
+                    className="text-center px-3 py-2 text-sm text-gray-300 font-semibold tracking-wide"
+                    style={{ borderRight: '1px solid #374151' }}>
+                  {bank.banco}
+                </th>
+              ))}
+            </tr>
+            {/* Row 2: periods */}
+            <tr className="bg-gray-800 border-b border-gray-700">
+              <th className="sticky left-0 z-20 bg-gray-800 text-left px-4 py-2 text-gray-400 font-medium"
                   style={{ minWidth: '260px', width: '260px' }}>
                 Indicador
               </th>
-              {/* Per bank: 3 cols */}
               {banks.map(bank => (
                 <>
                   <th key={`${bank.ticker}-a`}
-                      className="text-right px-3 py-3 text-gray-400 font-medium tabular-nums"
+                      className="text-right px-3 py-2 text-gray-400 font-medium tabular-nums"
                       style={{ minWidth: '90px' }}>
-                    <div className="text-xs text-gray-500">{bank.ticker}</div>
-                    <div className="text-gray-200 text-xs">{periodLabel(periodA)}</div>
-                  </th>
-                  <th key={`${bank.ticker}-d`}
-                      className="text-right px-2 py-3 text-gray-600 font-normal"
-                      style={{ minWidth: '70px' }}>
-                    <div className="text-xs">Δ%</div>
+                    <div className="text-xs text-gray-200">{periodLabel(periodA)}</div>
                   </th>
                   <th key={`${bank.ticker}-b`}
-                      className="text-right px-3 py-3 text-blue-400 font-semibold"
-                      style={{ minWidth: '90px', borderRight: '1px solid #374151' }}>
-                    <div className="text-xs text-gray-500">{bank.ticker}</div>
+                      className="text-right px-3 py-2 text-blue-400 font-semibold"
+                      style={{ minWidth: '90px' }}>
                     <div className="text-xs">{periodLabel(periodB)}</div>
                   </th>
-                </>
-              ))}
-            </tr>
-            {/* Bank name row */}
-            <tr className="bg-gray-850 border-b border-gray-700">
-              <td className="sticky left-0 z-20 bg-[#111] px-4 py-1.5 text-xs text-gray-600">R$ milhões (exceto onde indicado)</td>
-              {banks.map(bank => (
-                <>
-                  <td key={`${bank.ticker}-na`} colSpan={3}
-                      className="text-center px-3 py-1.5 text-xs text-gray-500 font-medium"
-                      style={{ borderRight: '1px solid #374151' }}>
-                    {bank.banco}
-                  </td>
+                  <th key={`${bank.ticker}-d`}
+                      className="text-right px-2 py-2 text-gray-600 font-normal"
+                      style={{ minWidth: '70px', borderRight: '1px solid #374151' }}>
+                    <div className="text-xs">Δ%</div>
+                  </th>
                 </>
               ))}
             </tr>
@@ -316,12 +314,12 @@ export default function BancosComparativo({ banks }: Props) {
                             <td key={`${bank.ticker}-a`} className="text-right px-3 py-2.5 text-gray-400 tabular-nums text-xs">
                               {fmtNum(vA, row.fmt)}
                             </td>
-                            <td key={`${bank.ticker}-d`} className={`text-right px-2 py-2.5 tabular-nums text-xs ${deltaColor(d, row.key)}`}>
-                              {d.text}
-                            </td>
-                            <td key={`${bank.ticker}-b`} className="text-right px-3 py-2.5 text-blue-200 tabular-nums text-xs font-medium"
-                                style={{ borderRight: '1px solid #374151' }}>
+                            <td key={`${bank.ticker}-b`} className="text-right px-3 py-2.5 text-blue-200 tabular-nums text-xs font-medium">
                               {fmtNum(vB, row.fmt)}
+                            </td>
+                            <td key={`${bank.ticker}-d`} className={`text-right px-2 py-2.5 tabular-nums text-xs ${deltaColor(d, row.key)}`}
+                                style={{ borderRight: '1px solid #374151' }}>
+                              {d.text}
                             </td>
                           </>
                         )
