@@ -66,7 +66,16 @@ const SECTIONS: { title: string; rows: Row[] }[] = [
   {
     title: 'Carteira de Crédito',
     rows: [
-      { label: 'Total (R$ bilhões)',           key: 'carteira.total',  fmt: 'bilhoes', bold: true },
+      { label: 'Total (c/ garantias e TVM)',     key: 'carteira.total',             fmt: 'bilhoes', bold: true },
+      { label: 'Pessoas Físicas',                key: 'carteira.pessoas_fisicas',   fmt: 'bilhoes', indent: 1 },
+      { label: 'Cartão de Crédito',              key: 'carteira.cartao_credito',    fmt: 'bilhoes', indent: 2 },
+      { label: 'Crédito Pessoal',                key: 'carteira.credito_pessoal',   fmt: 'bilhoes', indent: 2 },
+      { label: 'Consignado',                     key: 'carteira.consignado',        fmt: 'bilhoes', indent: 2 },
+      { label: 'Veículos',                       key: 'carteira.veiculos',          fmt: 'bilhoes', indent: 2 },
+      { label: 'Imobiliário',                    key: 'carteira.imobiliario',       fmt: 'bilhoes', indent: 2 },
+      { label: 'MPMEs',                          key: 'carteira.mpmes',             fmt: 'bilhoes', indent: 1 },
+      { label: 'Grandes Empresas',               key: 'carteira.grandes_empresas',  fmt: 'bilhoes', indent: 1 },
+      { label: 'América Latina',                 key: 'carteira.america_latina',    fmt: 'bilhoes', indent: 1 },
     ],
   },
   {
@@ -79,8 +88,14 @@ const SECTIONS: { title: string; rows: Row[] }[] = [
   {
     title: 'Capital Regulatório (Basileia)',
     rows: [
-      { label: 'Índice de Basileia (%)',              key: 'capital.basileia_pct',  fmt: 'pct_pp' },
-      { label: 'Índice CET1 (%)',                     key: 'capital.cet1_pct',      fmt: 'pct_pp' },
+      { label: 'Patrimônio de Referência (NI + NII)', key: 'capital.patrimonio_referencia', fmt: 'milhoes', bold: true },
+      { label: 'Capital Principal (CET1)',             key: 'capital.cet1',                  fmt: 'milhoes', indent: 1 },
+      { label: 'Capital Complementar (AT1)',           key: 'capital.at1',                   fmt: 'milhoes', indent: 1 },
+      { label: 'Capital Nível II (T2)',                key: 'capital.capital_nivel_ii',       fmt: 'milhoes', indent: 1 },
+      { label: 'RWA (Exposição Pond. pelo Risco)',     key: 'capital.rwa_total',              fmt: 'milhoes' },
+      { label: 'Índice de Basileia (%)',               key: 'capital.basileia_pct',           fmt: 'pct_pp', bold: true },
+      { label: 'Índice de Capital Nível I (%)',        key: 'capital.nivel_i_pct',            fmt: 'pct_pp', indent: 1 },
+      { label: 'Índice CET1 (%)',                      key: 'capital.cet1_pct',               fmt: 'pct_pp', indent: 1 },
     ],
   },
 ]
