@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { TrendingUp } from 'lucide-react'
 import { MacroFocusTable } from './MacroFocusTable'
 import { MacroChartGrid } from './MacroChart'
-import type { FocusRow, MacroChartSeries } from '@/lib/macroData'
+import { fetchMacroDataClient, type FocusRow, type MacroChartSeries } from '@/lib/macroFetch'
 
 function Skeleton({ height = 200 }: { height?: number }) {
   return <div className="animate-pulse bg-slate-800/60 rounded-xl w-full" style={{ height }} />
@@ -17,10 +17,8 @@ export default function MacroPageClient() {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    fetch('/api/macro')
-      .then(r => r.json())
+    fetchMacroDataClient()
       .then(d => {
-        if (d.error) { setError(true); return }
         setFocusDate(d.focusDate)
         setFocusRows(d.focusRows)
         setChartSeries(d.chartSeries)

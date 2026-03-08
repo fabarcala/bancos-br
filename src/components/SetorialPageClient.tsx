@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Activity } from 'lucide-react'
 import { MultiSeriesChart, SingleLineChart, KPICard } from './SetorialChart'
-import type { SetorialData } from '@/lib/setorialData'
+import { fetchSetorialDataClient, type SetorialData } from '@/lib/setorialFetch'
 
 function Skeleton({ height = 240 }: { height?: number }) {
   return <div className="animate-pulse bg-slate-800/60 rounded-xl w-full" style={{ height }} />
@@ -14,12 +14,8 @@ export default function SetorialPageClient() {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    fetch('/api/setorial')
-      .then(r => r.json())
-      .then(d => {
-        if (d.error) setError(true)
-        else setData(d)
-      })
+    fetchSetorialDataClient()
+      .then(d => setData(d))
       .catch(() => setError(true))
   }, [])
 
