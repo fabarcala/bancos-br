@@ -41,7 +41,7 @@ export default function MacroPageClient() {
           </span>
           {focusPubDate && focusRefDate && (
             <span className="text-slate-500 text-sm">
-              Publicado em: {focusPubDate} · Dados até: {focusRefDate}
+              Dados até: {focusRefDate} · Publicado em: {focusPubDate}
             </span>
           )}
         </div>
