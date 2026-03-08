@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { MacroFocusTable } from './MacroFocusTable'
 import { MacroChartGrid } from './MacroChart'
-import { fetchMacroDataClient, type FocusRow, type MacroChartSeries } from '@/lib/macroFetch'
+import { fetchMacroDataClient, type MacroChartSeries } from '@/lib/macroFetch'
 
 function Skeleton({ height = 200 }: { height?: number }) {
   return <div className="animate-pulse bg-slate-800/60 rounded-xl w-full" style={{ height }} />
@@ -11,7 +10,6 @@ function Skeleton({ height = 200 }: { height?: number }) {
 
 export default function MacroPageClient() {
   const [focusDate, setFocusDate] = useState<string | null>(null)
-  const [focusRows, setFocusRows] = useState<FocusRow[] | null>(null)
   const [chartSeries, setChartSeries] = useState<MacroChartSeries[] | null>(null)
   const [error, setError] = useState(false)
 
@@ -19,7 +17,6 @@ export default function MacroPageClient() {
     fetchMacroDataClient()
       .then(d => {
         setFocusDate(d.focusDate)
-        setFocusRows(d.focusRows)
         setChartSeries(d.chartSeries)
       })
       .catch(() => setError(true))
@@ -44,15 +41,6 @@ export default function MacroPageClient() {
           Não foi possível carregar os dados do Banco Central. Tente recarregar a página.
         </div>
       )}
-
-      {/* Focus projections table */}
-      <section className="mb-10">
-        <h2 className="text-lg font-semibold text-slate-300 mb-4">Projeções do Mercado</h2>
-        {!focusDate || !focusRows
-          ? <Skeleton height={180} />
-          : <MacroFocusTable focusDate={focusDate} rows={focusRows} />
-        }
-      </section>
 
       {/* Historical charts */}
       <section>

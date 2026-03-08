@@ -148,7 +148,10 @@ export async function fetchMacroDataClient(): Promise<{
     'Selic': selicHist,
   }
 
-  const chartIndicators = MACRO_INDICATORS.slice(0, 4)
+  // Ordem: Selic, IPCA, Câmbio, PIB
+  const chartIndicators = ['Selic', 'IPCA', 'Câmbio', 'PIB Total'].map(
+    key => MACRO_INDICATORS.find(i => i.key === key)!
+  )
 
   const chartSeries: MacroChartSeries[] = chartIndicators.map(ind => {
     const hist = historicalByIndicator[ind.key] ?? {}
