@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Link from 'next/link'
-import { BarChart3 } from 'lucide-react'
-
 export const metadata: Metadata = {
   title: 'Bancos BR | Estatísticas do Sistema Financeiro',
   description: 'Dashboard com resultados e indicadores dos principais bancos brasileiros',
@@ -15,8 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Header */}
         <header className="border-b border-slate-800 bg-gray-950/95 backdrop-blur sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center">
-            <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
-              <BarChart3 className="w-5 h-5 text-blue-400" />
+            <Link href="/" className="flex items-center font-bold text-lg shrink-0">
               <span className="text-white">Bancos<span className="text-blue-400">BR</span></span>
             </Link>
             <nav className="flex-1 flex items-center justify-center gap-6 text-sm text-slate-400">
