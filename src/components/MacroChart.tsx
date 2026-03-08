@@ -78,6 +78,10 @@ export function MacroIndicatorChart({ series }: { series: MacroChartSeries }) {
           <Tooltip content={<CustomTooltip unit={series.unit} />} />
           <Legend
             wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
+            payload={[
+              { value: 'Realizado',      type: 'line', color: '#60a5fa' },
+              { value: 'Projeção Focus', type: 'line', color: '#f59e0b' },
+            ]}
             formatter={(val) => (
               <span style={{ color: '#94a3b8' }}>{val}</span>
             )}
