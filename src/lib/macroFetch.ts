@@ -14,12 +14,15 @@ export type MacroIndicator = {
 }
 
 export const MACRO_INDICATORS: MacroIndicator[] = [
-  { key: 'IPCA',                label: 'IPCA',                unit: '%',      decimals: 2 },
-  { key: 'PIB Total',           label: 'PIB Total',            unit: '%',      decimals: 2 },
-  { key: 'Câmbio',              label: 'Câmbio (R$/US$)',      unit: 'R$',     decimals: 2 },
-  { key: 'Selic',               label: 'Selic',                unit: '% a.a.', decimals: 2 },
-  { key: 'IGP-M',               label: 'IGP-M',                unit: '%',      decimals: 2 },
-  { key: 'IPCA Administrados',  label: 'IPCA Administrados',   unit: '%',      decimals: 2 },
+  { key: 'IPCA',                label: 'IPCA',                           unit: '%',      decimals: 2 },
+  { key: 'PIB Total',           label: 'PIB Total',                      unit: '%',      decimals: 2 },
+  { key: 'Câmbio',              label: 'Câmbio (R$/US$)',                 unit: 'R$',     decimals: 2 },
+  { key: 'Selic',               label: 'Selic',                          unit: '% a.a.', decimals: 2 },
+  { key: 'IGP-M',               label: 'IGP-M',                          unit: '%',      decimals: 2 },
+  { key: 'IPCA Administrados',  label: 'IPCA Administrados',              unit: '%',      decimals: 2 },
+  { key: 'DLSP',                label: 'DLSP (% do PIB)',                 unit: '%',      decimals: 1 },
+  { key: 'Resultado primário',  label: 'Resultado primário (% do PIB)',   unit: '%',      decimals: 2 },
+  { key: 'Resultado nominal',   label: 'Resultado nominal (% do PIB)',    unit: '%',      decimals: 2 },
 ]
 
 export type FocusRow = {
@@ -86,6 +89,49 @@ async function fetchYearEndSGS(serie: number, years: number[]): Promise<Record<n
   return result
 }
 
+/**
+ * Fetches a monthly SGS series over a range and returns the December value for each year.
+ * multiplier: use -1 to flip NFSP convention (deficit positive) → resultado convention (surplus positive)
+ */
+async function fetchDecemberByYearRange(
+  serie: number,
+  startYear: number,
+  endYear: number,
+  multiplier = 1
+): Promise<Record<number, number>> {
+  const data = await fetchSGS(serie, `dataInicial=01/12/${startYear}&dataFinal=31/12/${endYear}`)
+  const result: Record<number, number> = {}
+  for (const d of data) {
+    const parts = d.data.split('/')
+    if (parts[1] === '12') {
+      result[parseInt(parts[2])] = parseFloat(d.valor) * multiplier
+    }
+  }
+  return result
+}
+
+/**
+ * Computes annual IGP-M from monthly série 189.
+ * Compounds 12 monthly values → annual %.
+ */
+async function fetchIGPMHistorical(startYear: number, endYear: number): Promise<Record<number, number>> {
+  const data = await fetchSGS(189, `dataInicial=01/01/${startYear}&dataFinal=31/12/${endYear}`)
+  const byYear: Record<number, number[]> = {}
+  for (const d of data) {
+    const year = parseInt(d.data.split('/')[2])
+    if (!byYear[year]) byYear[year] = []
+    byYear[year].push(parseFloat(d.valor))
+  }
+  const result: Record<number, number> = {}
+  for (const [yearStr, vals] of Object.entries(byYear)) {
+    if (vals.length === 12) {
+      const acc = vals.reduce((a, v) => a * (1 + v / 100), 1)
+      result[parseInt(yearStr)] = parseFloat(((acc - 1) * 100).toFixed(2))
+    }
+  }
+  return result
+}
+
 async function fetchFocusLatestDate(): Promise<string> {
   const res = await fetch(
     `${FOCUS_BASE}/ExpectativasMercadoAnuais?$top=1&$filter=baseCalculo eq 0&$orderby=Data desc&$format=json&$select=Data`
@@ -118,13 +164,28 @@ export async function fetchMacroDataClient(): Promise<{
 }> {
   const YEARS = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
   const PROJ_YEARS = [2026, 2027, 2028, 2029]
+  const START_YEAR = 2015
 
-  const [focusDate, ipcaHist, pibHist, cambioHist, selicHist] = await Promise.all([
+  const [
+    focusDate,
+    ipcaHist,
+    pibHist,
+    cambioHist,
+    selicHist,
+    igpmHist,
+    dlspHist,
+    primHist,
+    nomHist,
+  ] = await Promise.all([
     fetchFocusLatestDate(),
     fetchIPCAHistorical(),
     fetchPIBHistorical(),
-    fetchYearEndSGS(1, YEARS),
-    fetchYearEndSGS(4189, YEARS),
+    fetchYearEndSGS(1, YEARS),            // câmbio (dólar)
+    fetchYearEndSGS(4189, YEARS),         // selic
+    fetchIGPMHistorical(START_YEAR, 2025),              // IGP-M anual (composto de mensal)
+    fetchDecemberByYearRange(4513, START_YEAR, 2025),   // DLSP % PIB
+    fetchDecemberByYearRange(5793, START_YEAR, 2025, -1), // Resultado primário % PIB (flip: +superávit)
+    fetchDecemberByYearRange(5717, START_YEAR, 2025, -1), // Resultado nominal % PIB (flip: +superávit)
   ])
 
   const focusProj = await fetchFocusProjections(focusDate)
@@ -146,12 +207,19 @@ export async function fetchMacroDataClient(): Promise<{
     'PIB Total': pibHist,
     'Câmbio': cambioHist,
     'Selic': selicHist,
+    'IGP-M': igpmHist,
+    'DLSP': dlspHist,
+    'Resultado primário': primHist,
+    'Resultado nominal': nomHist,
   }
 
-  // Ordem: Selic, IPCA, Câmbio, PIB
-  const chartIndicators = ['Selic', 'IPCA', 'Câmbio', 'PIB Total'].map(
-    key => MACRO_INDICATORS.find(i => i.key === key)!
-  )
+  // Ordem dos gráficos:
+  // Linha 1: Selic · IPCA
+  // Linha 2: Câmbio · PIB
+  // Linha 3: IGP-M · DLSP
+  // Linha 4: Resultado primário · Resultado nominal
+  const chartKeys = ['Selic', 'IPCA', 'Câmbio', 'PIB Total', 'IGP-M', 'DLSP', 'Resultado primário', 'Resultado nominal']
+  const chartIndicators = chartKeys.map(key => MACRO_INDICATORS.find(i => i.key === key)!)
 
   const chartSeries: MacroChartSeries[] = chartIndicators.map(ind => {
     const hist = historicalByIndicator[ind.key] ?? {}
@@ -170,6 +238,7 @@ export async function fetchMacroDataClient(): Promise<{
       })),
     ]
 
+    // Liga o ponto de 2025 à linha de projeção (continuidade visual)
     const last = data.find(d => d.year === '2025')
     const first = data.find(d => d.year === '2026')
     if (last?.historical != null && first?.projected != null) {
