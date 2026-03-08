@@ -1,7 +1,7 @@
 {
   "banco": "Santander Brasil",
   "ticker": "SANB11",
-  "nota": "ROAE = gerencial excluindo ágio (diferente de Itaú/Bradesco que incluem ágio). Carteira detalhada por segmento disponível apenas para 4T24 e 1T25. PDD/Carteira: nova metodologia Resolução CMN 4.966/21 a partir de 2025, não comparável ao 4T24. Financiamento ao Consumo mapeado em credito_pessoal (inclui auto, consignado, crédito pessoal).",
+  "nota": "ROAE = gerencial excluindo ágio (metodologia própria). Financiamento ao Consumo (veículos, leasing) mapeado em credito_pessoal; Imobiliário = sub-carteira de PF; Cartão e Consignado = sub-carteiras de PF. PDD/Carteira: nova metodologia Resolução CMN 4.966/21 a partir de 2025, não comparável ao 4T24.",
   "trimestres": {
     "4T24": {
       "dre": {
@@ -36,7 +36,7 @@
         "credito_pessoal": 83.0,
         "consignado": null,
         "veiculos": null,
-        "imobiliario": null,
+        "imobiliario": 74.8,
         "mpmes": 76.6,
         "grandes_empresas": 135.4,
         "america_latina": null
@@ -90,7 +90,7 @@
         "credito_pessoal": 83.5,
         "consignado": null,
         "veiculos": null,
-        "imobiliario": null,
+        "imobiliario": 75.7,
         "mpmes": 78.0,
         "grandes_empresas": 132.3,
         "america_latina": null
@@ -139,12 +139,12 @@
       },
       "carteira": {
         "total": 539.5,
-        "pessoas_fisicas": null,
-        "cartao_credito": null,
-        "credito_pessoal": null,
-        "consignado": null,
+        "pessoas_fisicas": 248.7,
+        "cartao_credito": 57.7,
+        "credito_pessoal": 87.4,
+        "consignado": 65.8,
         "veiculos": null,
-        "imobiliario": null,
+        "imobiliario": 77.0,
         "mpmes": null,
         "grandes_empresas": null,
         "america_latina": null
@@ -193,12 +193,12 @@
       },
       "carteira": {
         "total": 550.3,
-        "pessoas_fisicas": null,
-        "cartao_credito": null,
-        "credito_pessoal": null,
-        "consignado": null,
+        "pessoas_fisicas": 249.0,
+        "cartao_credito": 59.9,
+        "credito_pessoal": 89.0,
+        "consignado": 63.2,
         "veiculos": null,
-        "imobiliario": null,
+        "imobiliario": 78.2,
         "mpmes": null,
         "grandes_empresas": null,
         "america_latina": null
@@ -247,12 +247,12 @@
       },
       "carteira": {
         "total": 566.1,
-        "pessoas_fisicas": null,
-        "cartao_credito": null,
-        "credito_pessoal": null,
-        "consignado": null,
+        "pessoas_fisicas": 253.1,
+        "cartao_credito": 65.4,
+        "credito_pessoal": 93.8,
+        "consignado": 61.2,
         "veiculos": null,
-        "imobiliario": null,
+        "imobiliario": 80.7,
         "mpmes": null,
         "grandes_empresas": null,
         "america_latina": null
