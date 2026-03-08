@@ -26,9 +26,23 @@ export default function SetorialPageClient() {
     <div>
       {/* Hero */}
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-1">Indicadores do Sistema Financeiro Nacional</h1>
-        <p className="text-slate-400 text-lg mb-0.5">Crédito, Inadimplência e Taxas de Juros</p>
-        <p className="text-slate-500 text-sm">Fonte: Banco Central do Brasil (BCB) · Dados mensais</p>
+        <h1 className="text-3xl font-bold text-white mb-1">Indicadores Setoriais do SFN — Crédito, Inadimplência e Juros</h1>
+        <p className="text-slate-400 text-lg mb-2">Evolução mensal por modalidade de crédito</p>
+
+        {/* Badge */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="inline-flex items-center gap-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium px-3 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block" />
+            Dados mensais · Fonte: Banco Central do Brasil
+          </span>
+        </div>
+
+        {/* Bloco de texto indexável */}
+        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
+          Os indicadores setoriais do Sistema Financeiro Nacional (SFN) são publicados mensalmente pelo Banco Central do Brasil.
+          Os dados cobrem carteira de crédito, inadimplência (operações com atraso superior a 90 dias) e taxas médias de juros —
+          segmentados por modalidade: cartão de crédito, crédito consignado, financiamento imobiliário e aquisição de veículos.
+        </p>
       </div>
 
       {error && (
