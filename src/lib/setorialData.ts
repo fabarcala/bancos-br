@@ -12,7 +12,7 @@ async function fetchSGS(serie: number, months = 60): Promise<SGSPoint[]> {
   try {
     const res = await fetch(
       `${SGS}.${serie}/dados/ultimos/${months}?formato=json`,
-      { next: { revalidate: 3600 } }
+      { cache: 'no-store' }
     )
     if (!res.ok) return []
     const data: { data: string; valor: string }[] = await res.json()

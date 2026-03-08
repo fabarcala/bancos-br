@@ -1,7 +1,7 @@
 import { fetchSetorialData } from '@/lib/setorialData'
 import { NextResponse } from 'next/server'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {

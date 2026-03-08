@@ -46,7 +46,7 @@ export type MacroChartSeries = {
 async function fetchIPCAHistorical(): Promise<Record<number, number>> {
   const res = await fetch(
     `${SGS_BASE}.13522/dados?formato=json&dataInicial=01/12/2010&dataFinal=01/12/2025`,
-    { next: { revalidate: 86400 } }
+    { cache: 'no-store' }
   )
   if (!res.ok) return {}
   const data: { data: string; valor: string }[] = await res.json()
@@ -62,7 +62,7 @@ async function fetchIPCAHistorical(): Promise<Record<number, number>> {
 async function fetchPIBHistorical(): Promise<Record<number, number>> {
   const res = await fetch(
     `${SGS_BASE}.7326/dados?formato=json`,
-    { next: { revalidate: 86400 } }
+    { cache: 'no-store' }
   )
   if (!res.ok) return {}
   const data: { data: string; valor: string }[] = await res.json()
@@ -82,7 +82,7 @@ async function fetchCambioHistorical(): Promise<Record<number, number>> {
     try {
       const res = await fetch(
         `${SGS_BASE}.1/dados?formato=json&dataInicial=20/12/${year}&dataFinal=31/12/${year}`,
-        { next: { revalidate: 86400 } }
+        { cache: 'no-store' }
       )
       if (!res.ok) return
       const data: { data: string; valor: string }[] = await res.json()
@@ -102,7 +102,7 @@ async function fetchSelicHistorical(): Promise<Record<number, number>> {
     try {
       const res = await fetch(
         `${SGS_BASE}.4189/dados?formato=json&dataInicial=01/12/${year}&dataFinal=31/12/${year}`,
-        { next: { revalidate: 86400 } }
+        { cache: 'no-store' }
       )
       if (!res.ok) return
       const data: { data: string; valor: string }[] = await res.json()
@@ -119,7 +119,7 @@ async function fetchSelicHistorical(): Promise<Record<number, number>> {
 async function fetchFocusLatestDate(): Promise<string> {
   const res = await fetch(
     `${FOCUS_BASE}/ExpectativasMercadoAnuais?$top=1&$filter=baseCalculo eq 0&$orderby=Data desc&$format=json&$select=Data`,
-    { next: { revalidate: 3600 } }
+    { cache: 'no-store' }
   )
   const json = await res.json()
   return json.value[0].Data as string
@@ -128,7 +128,7 @@ async function fetchFocusLatestDate(): Promise<string> {
 async function fetchFocusProjections(latestDate: string): Promise<Record<string, Record<string, { mediana: number; respondentes: number }>>> {
   const indicators = MACRO_INDICATORS.map(i => `Indicador eq '${encodeURIComponent(i.key)}'`).join(' or ')
   const url = `${FOCUS_BASE}/ExpectativasMercadoAnuais?$filter=Data eq '${latestDate}' and baseCalculo eq 0 and (${indicators})&$format=json&$select=Indicador,DataReferencia,Mediana,numeroRespondentes&$top=200`
-  const res = await fetch(url, { next: { revalidate: 3600 } })
+  const res = await fetch(url, { cache: 'no-store' })
   const json = await res.json()
 
   // Build: {indicador: {year: {mediana, respondentes}}}
