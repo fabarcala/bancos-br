@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { TrendingUp } from 'lucide-react'
 import { MacroFocusTable } from './MacroFocusTable'
 import { MacroChartGrid } from './MacroChart'
 import { fetchMacroDataClient, type FocusRow, type MacroChartSeries } from '@/lib/macroFetch'
@@ -31,7 +30,6 @@ export default function MacroPageClient() {
       {/* Hero */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-1">
-          <TrendingUp className="w-6 h-6 text-blue-400" />
           <h1 className="text-3xl font-bold text-white">Indicadores Macroeconômicos</h1>
         </div>
         <p className="text-slate-400 text-lg mb-1">
