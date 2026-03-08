@@ -121,6 +121,28 @@ export default function GraficoPanel({ defaultMetricKey, defaultBanks }: Props) 
     })
   }, [allQuarters, selectedBanks, metricKey])
 
+  // Dynamic Y domain with padding
+  const yDomain = useMemo((): [number, number] => {
+    const vals: number[] = []
+    for (const row of chartData) {
+      for (const b of ALL_BANKS) {
+        if (!selectedBanks.includes(b.id)) continue
+        const v = row[b.id]
+        if (typeof v === 'number' && isFinite(v)) vals.push(v)
+      }
+    }
+    if (vals.length === 0) return [0, 1]
+    const min = Math.min(...vals)
+    const max = Math.max(...vals)
+    const range = max - min || Math.abs(max) * 0.1 || 1
+    const pad = range * 0.25
+    const lower = min - pad
+    const upper = max + pad
+    // For percentage metrics, don't go below 0 if all values are positive
+    const domMin = metric.fmt === 'pct' && lower > 0 ? parseFloat(lower.toFixed(2)) : parseFloat(lower.toFixed(2))
+    return [parseFloat(domMin.toFixed(2)), parseFloat(upper.toFixed(2))]
+  }, [chartData, selectedBanks, metric.fmt])
+
   function toggleBank(id: string) {
     setSelectedBanks(prev =>
       prev.includes(id) ? prev.filter(b => b !== id) : [...prev, id]
@@ -205,11 +227,12 @@ export default function GraficoPanel({ defaultMetricKey, defaultBanks }: Props) 
                 tickLine={false}
               />
               <YAxis
+                domain={yDomain}
                 tickFormatter={v => fmtAxis(v, metric.fmt)}
                 tick={{ fill: '#94a3b8', fontSize: 11 }}
                 axisLine={false}
                 tickLine={false}
-                width={52}
+                width={56}
               />
               <Tooltip content={<CustomTooltip />} />
               <Legend
