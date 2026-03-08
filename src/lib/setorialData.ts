@@ -8,17 +8,27 @@ function annualize(monthly: number): number {
   return (Math.pow(1 + monthly / 100, 12) - 1) * 100
 }
 
-async function fetchSGS(serie: number, months = 60): Promise<SGSPoint[]> {
+function dateParamsBR(yearsBack: number): string {
+  const now = new Date()
+  const from = new Date(now)
+  from.setFullYear(from.getFullYear() - yearsBack)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const fmt = (d: Date) => `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`
+  return `dataInicial=${fmt(from)}&dataFinal=${fmt(now)}`
+}
+
+async function fetchSGS(serie: number, yearsBack = 5): Promise<SGSPoint[]> {
   try {
+    const params = dateParamsBR(yearsBack)
     const res = await fetch(
-      `${SGS}.${serie}/dados/ultimos/${months}?formato=json`,
+      `${SGS}.${serie}/dados?formato=json&${params}`,
       { cache: 'no-store' }
     )
     if (!res.ok) return []
     const data: { data: string; valor: string }[] = await res.json()
     if (!Array.isArray(data)) return []
     return data.map(d => ({
-      date: d.data.slice(3), // "01/01/2026" → "01/2026"
+      date: d.data.slice(3),
       value: parseFloat(d.valor),
     }))
   } catch {
@@ -79,12 +89,12 @@ export async function fetchSetorialData(): Promise<SetorialData> {
     taxaCartaoRot, taxaConsignado, taxaImobiliarioRaw, taxaVeiculos,
     inadimVeiculos,
   ] = await Promise.all([
-    fetchSGS(20539, 60), fetchSGS(20540, 60), fetchSGS(20541, 60),
-    fetchSGS(21082, 60), fetchSGS(21084, 60), fetchSGS(21083, 60),
-    fetchSGS(20714, 60), fetchSGS(25433, 60), fetchSGS(25434, 60),
-    fetchSGS(20590, 60), fetchSGS(20579, 60), fetchSGS(20611, 60), fetchSGS(20581, 60),
-    fetchSGS(22022, 60), fetchSGS(20746, 60), fetchSGS(25497, 60), fetchSGS(20751, 60),
-    fetchSGS(21121, 60),
+    fetchSGS(20539), fetchSGS(20540), fetchSGS(20541),
+    fetchSGS(21082), fetchSGS(21084), fetchSGS(21083),
+    fetchSGS(20714), fetchSGS(25433), fetchSGS(25434),
+    fetchSGS(20590), fetchSGS(20579), fetchSGS(20611), fetchSGS(20581),
+    fetchSGS(22022), fetchSGS(20746), fetchSGS(25497), fetchSGS(20751),
+    fetchSGS(21121),
   ])
 
   return {
