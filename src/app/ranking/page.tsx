@@ -7,8 +7,8 @@ import sanRaw     from '../../../data/santander_historico.json'
 import bvRaw      from '../../../data/bv_historico.json'
 
 export const metadata: Metadata = {
-  title: 'Ranking dos bancos brasileiros — ROAE, NPL, Basileia, Eficiência | BancosBR',
-  description: 'Ranking comparativo dos principais bancos brasileiros por rentabilidade, inadimplência, capital e eficiência operacional.',
+  title: 'Ranking dos Bancos Brasileiros — ROAE, Inadimplência, Lucro | 4T25',
+  description: 'Veja quais bancos lideram em rentabilidade, eficiência, inadimplência e lucro no 4T25. Ranking de Itaú, Bradesco, Santander e BV com dados dos earnings releases.',
 }
 
 const BANCO_COLORS: Record<string, string> = {
@@ -116,9 +116,24 @@ export default function RankingPage() {
     <div className="max-w-5xl mx-auto">
       {/* Header */}
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-1">Ranking dos Bancos</h1>
-        <p className="text-slate-400 text-lg mb-0.5">Destaque por Indicador — {LATEST}</p>
-        <p className="text-slate-500 text-sm">Fonte: Earnings releases dos bancos · Dados gerenciais/recorrentes</p>
+        <h1 className="text-3xl font-bold text-white mb-1">Ranking dos Bancos — {LATEST}</h1>
+        <p className="text-slate-400 text-lg mb-2">Destaque por Indicador Financeiro</p>
+
+        {/* Badge */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="inline-flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-800/50 text-emerald-300 text-xs font-medium px-3 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+            Dados {LATEST} · Earnings releases
+          </span>
+        </div>
+
+        {/* Bloco de texto indexável */}
+        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
+          Ranking trimestral dos principais bancos brasileiros por indicador financeiro.
+          Compare rentabilidade (ROAE), inadimplência, eficiência operacional, capital regulatório (Basileia III),
+          lucro líquido e crescimento de carteira de Itaú, Bradesco, Santander e BV.
+          Dados do {LATEST}, extraídos dos earnings releases gerenciais/recorrentes.
+        </p>
       </div>
 
       {/* Grid */}
