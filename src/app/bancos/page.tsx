@@ -27,10 +27,9 @@ export default function BancosPage() {
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-full px-4 py-8 space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-white">Comparativo de Resultados — Bancos BR</h1>
-          <p className="text-gray-400 text-sm mt-1">
-            Toggle <strong>Trimestral</strong> para comparar dois trimestres · <strong>LTM</strong> para comparar dois períodos de 12 meses acumulados · Δ% mostra a variação entre os períodos.
-          </p>
+          <h1 className="text-3xl font-bold text-white mb-1">Resultados dos Principais Bancos</h1>
+          <p className="text-slate-400 text-lg mb-0.5">Comparativo Trimestral e LTM</p>
+          <p className="text-slate-500 text-sm">Fonte: Earnings releases dos bancos · Trimestral ou LTM (12 meses acumulados) · Δ% mostra a variação entre os períodos</p>
         </div>
         <BancosComparativo banks={banks} />
       </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Activity } from 'lucide-react'
 import { MultiSeriesChart, SingleLineChart, KPICard } from './SetorialChart'
 import { fetchSetorialDataClient, type SetorialData } from '@/lib/setorialFetch'
 
@@ -26,13 +25,9 @@ export default function SetorialPageClient() {
     <div>
       {/* Hero */}
       <div className="mb-10">
-        <div className="flex items-center gap-3 mb-2">
-          <Activity className="w-6 h-6 text-emerald-400" />
-          <h1 className="text-3xl font-bold text-white">Indicadores Setoriais</h1>
-        </div>
-        <p className="text-slate-400 text-lg">
-          Crédito, taxas de juros e inadimplência do Sistema Financeiro Nacional — dados mensais do Banco Central
-        </p>
+        <h1 className="text-3xl font-bold text-white mb-1">Indicadores do Sistema Financeiro Nacional</h1>
+        <p className="text-slate-400 text-lg mb-0.5">Crédito, Inadimplência e Taxas de Juros</p>
+        <p className="text-slate-500 text-sm">Fonte: Banco Central do Brasil (BCB) · Dados mensais</p>
       </div>
 
       {error && (

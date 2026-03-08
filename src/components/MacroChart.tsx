@@ -78,12 +78,17 @@ export function MacroIndicatorChart({ series }: { series: MacroChartSeries }) {
           <Tooltip content={<CustomTooltip unit={series.unit} />} />
           <Legend
             wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
-            payload={[
-              { value: 'Realizado',      type: 'line', color: '#60a5fa' },
-              { value: 'Projeção Focus', type: 'line', color: '#f59e0b' },
-            ]}
-            formatter={(val) => (
-              <span style={{ color: '#94a3b8' }}>{val}</span>
+            content={() => (
+              <div style={{ display: 'flex', gap: 16, justifyContent: 'center', fontSize: 12, paddingTop: 8 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <svg width="16" height="3"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="#60a5fa" strokeWidth="2" /></svg>
+                  <span style={{ color: '#94a3b8' }}>Realizado</span>
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <svg width="16" height="3"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="#f59e0b" strokeWidth="2" strokeDasharray="5 3" /></svg>
+                  <span style={{ color: '#94a3b8' }}>Projeção Focus</span>
+                </span>
+              </div>
             )}
           />
           {/* Vertical reference line between historical and projected */}
