@@ -69,7 +69,7 @@ export function ChartSection() {
       <div className="mt-8 bg-slate-900 border border-slate-700/50 rounded-xl p-5 text-sm text-slate-400">
         <p className="font-medium text-slate-300 mb-2">📋 Notas metodológicas</p>
         <ul className="space-y-1 list-disc list-inside">
-          <li>Todos os valores monetários em R$ bilhões (exceto BTG que publica em R$ milhões — convertido).</li>
+          <li>Todos os valores monetários em R$ bilhões.</li>
           <li>Lucro: recorrente/gerencial — exclui itens não recorrentes quando disponível.</li>
           <li>ROE e Índice de Eficiência: anualizado, conforme divulgado pelo banco.</li>
           <li>Cobertura histórica varia por banco e por indicador — dados ausentes aparecem como lacunas.</li>

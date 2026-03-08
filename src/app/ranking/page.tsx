@@ -4,7 +4,6 @@ import { InfoTooltip } from '@/components/InfoTooltip'
 import itauRaw    from '../../../data/itau_historico.json'
 import bradecoRaw from '../../../data/bradesco_historico.json'
 import sanRaw     from '../../../data/santander_historico.json'
-import bbRaw      from '../../../data/bb_historico.json'
 import bvRaw      from '../../../data/bv_historico.json'
 
 export const metadata: Metadata = {
@@ -16,7 +15,6 @@ const BANCO_COLORS: Record<string, string> = {
   'Itaú':      '#f97316',
   'Bradesco':  '#3b82f6',
   'Santander': '#ef4444',
-  'BB':        '#eab308',
   'BV':        '#22c55e',
 }
 
@@ -37,7 +35,6 @@ const ALL = [
   { nome: 'Itaú',      data: itauRaw    as BankEntry },
   { nome: 'Bradesco',  data: bradecoRaw as BankEntry },
   { nome: 'Santander', data: sanRaw     as BankEntry },
-  { nome: 'BB',        data: bbRaw      as BankEntry },
   { nome: 'BV',        data: bvRaw      as BankEntry },
 ]
 
@@ -164,7 +161,7 @@ export default function RankingPage() {
       </div>
 
       <p className="text-slate-600 text-xs mt-10 text-center">
-        BB: indicadores gerenciais não disponíveis nesta versão · Santander: ROAE excluindo ágio
+        Santander: ROAE excluindo ágio
       </p>
     </div>
   )

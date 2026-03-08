@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Footer */}
         <footer className="border-t border-slate-800 mt-16 py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center text-slate-500 text-sm">
-            <p>Fontes: Banco Central do Brasil (SGS e Boletim Focus) · Earnings releases dos bancos (Itaú, Bradesco, BB, Santander, BTG Pactual, BV).</p>
+            <p>Fontes: Banco Central do Brasil (SGS e Boletim Focus) · Earnings releases dos bancos (Itaú, Bradesco, Santander, BV).</p>
           </div>
         </footer>
       </body>

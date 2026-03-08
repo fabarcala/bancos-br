@@ -353,7 +353,7 @@ export default function BancosComparativo({ banks }: Props) {
         <p>¹ Seguros: Bradesco e Santander incluem o resultado líquido de seguros na linha de Receitas Totais de forma distinta do Itaú. BV não segrega seguros.</p>
         <p>* NPL: Itaú inclui TVM a partir do 2T25. Metodologias variam entre bancos.</p>
         <p>** Custo do Crédito / Carteira: Itaú usa saldo médio. Outros bancos: dado não disponível (extraído dos earnings releases).</p>
-        <p>— = dado não disponível nesta versão. BB: 4T24 pendente de release.</p>
+        <p>— = dado não disponível nesta versão.</p>
         <p>Fonte: Earnings Releases 4T24–4T25 e séries históricas RI de cada banco.</p>
       </div>
     </div>

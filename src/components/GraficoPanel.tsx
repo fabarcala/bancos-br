@@ -10,7 +10,6 @@ import {
 import itauRaw    from '../../data/itau_historico.json'
 import bradecoRaw from '../../data/bradesco_historico.json'
 import sanRaw     from '../../data/santander_historico.json'
-import bbRaw      from '../../data/bb_historico.json'
 import bvRaw      from '../../data/bv_historico.json'
 
 /* ─── Types ─────────────────────────────────────────────────── */
@@ -20,7 +19,6 @@ const ALL_BANKS: { id: string; label: string; data: BankData; color: string }[] 
   { id: 'itau',      label: 'Itaú',       data: itauRaw    as BankData, color: '#f97316' },
   { id: 'bradesco',  label: 'Bradesco',   data: bradecoRaw as BankData, color: '#3b82f6' },
   { id: 'santander', label: 'Santander',  data: sanRaw     as BankData, color: '#ef4444' },
-  { id: 'bb',        label: 'BB',         data: bbRaw      as BankData, color: '#eab308' },
   { id: 'bv',        label: 'BV',         data: bvRaw      as BankData, color: '#22c55e' },
 ]
 

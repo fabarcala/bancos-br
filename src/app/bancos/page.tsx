@@ -5,7 +5,7 @@ import BancosComparativo from '@/components/BancosComparativo'
 export const revalidate = 3600
 
 export const metadata = {
-  title: 'Comparativo de resultados — Itaú, Bradesco, Santander, BB, BV | BancosBR',
+  title: 'Comparativo de resultados — Itaú, Bradesco, Santander, BV | BancosBR',
   description: 'Comparativo trimestral de DRE, indicadores, carteira de crédito e capital dos principais bancos brasileiros listados na B3.',
 }
 
@@ -19,7 +19,6 @@ export default function BancosPage() {
     loadBank('itau_historico.json'),
     loadBank('bradesco_historico.json'),
     loadBank('santander_historico.json'),
-    loadBank('bb_historico.json'),
     loadBank('bv_historico.json'),
   ]
 
