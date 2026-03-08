@@ -140,6 +140,27 @@ async function fetchFocusLatestDate(): Promise<string> {
   return json.value[0].Data as string
 }
 
+/**
+ * O BCB coleta as expectativas até sexta-feira (Data do Focus) e publica
+ * o relatório na segunda-feira seguinte.
+ * - referenceDate = Data retornada pela API (sexta-feira)
+ * - publicationDate = segunda-feira seguinte
+ */
+function computeFocusDates(apiDate: string): { referenceDate: string; publicationDate: string } {
+  const fmt = (d: Date) =>
+    `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`
+
+  const ref = new Date(apiDate + 'T12:00:00Z') // força UTC noon para evitar off-by-one
+  const day = ref.getUTCDay() // 0=Dom 1=Seg ... 5=Sex 6=Sáb
+
+  // Calcula a segunda-feira mais próxima após (ou igual a) a data de referência
+  const daysToMonday = day === 1 ? 0 : day === 0 ? 1 : (8 - day) % 7
+  const pub = new Date(ref)
+  pub.setUTCDate(ref.getUTCDate() + daysToMonday)
+
+  return { referenceDate: fmt(ref), publicationDate: fmt(pub) }
+}
+
 async function fetchFocusProjections(latestDate: string): Promise<Record<string, Record<string, { mediana: number; respondentes: number }>>> {
   const indicators = MACRO_INDICATORS.map(i => `Indicador eq '${encodeURIComponent(i.key)}'`).join(' or ')
   const url = `${FOCUS_BASE}/ExpectativasMercadoAnuais?$filter=Data eq '${latestDate}' and baseCalculo eq 0 and (${indicators})&$format=json&$select=Indicador,DataReferencia,Mediana,numeroRespondentes&$top=200`
@@ -159,6 +180,8 @@ async function fetchFocusProjections(latestDate: string): Promise<Record<string,
 
 export async function fetchMacroDataClient(): Promise<{
   focusDate: string
+  focusReferenceDate: string
+  focusPublicationDate: string
   focusRows: FocusRow[]
   chartSeries: MacroChartSeries[]
 }> {
@@ -248,5 +271,6 @@ export async function fetchMacroDataClient(): Promise<{
     return { indicador: ind.key, label: ind.label, unit: ind.unit, data }
   })
 
-  return { focusDate, focusRows, chartSeries }
+  const { referenceDate, publicationDate } = computeFocusDates(focusDate)
+  return { focusDate, focusReferenceDate: referenceDate, focusPublicationDate: publicationDate, focusRows, chartSeries }
 }

@@ -10,6 +10,8 @@ function Skeleton({ height = 200 }: { height?: number }) {
 
 export default function MacroPageClient() {
   const [focusDate, setFocusDate] = useState<string | null>(null)
+  const [focusRefDate, setFocusRefDate] = useState<string | null>(null)
+  const [focusPubDate, setFocusPubDate] = useState<string | null>(null)
   const [chartSeries, setChartSeries] = useState<MacroChartSeries[] | null>(null)
   const [error, setError] = useState(false)
 
@@ -17,6 +19,8 @@ export default function MacroPageClient() {
     fetchMacroDataClient()
       .then(d => {
         setFocusDate(d.focusDate)
+        setFocusRefDate(d.focusReferenceDate)
+        setFocusPubDate(d.focusPublicationDate)
         setChartSeries(d.chartSeries)
       })
       .catch(() => setError(true))
@@ -35,8 +39,10 @@ export default function MacroPageClient() {
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse inline-block" />
             Atualizado toda segunda-feira
           </span>
-          {focusDate && (
-            <span className="text-slate-500 text-sm">Última publicação: {focusDate}</span>
+          {focusPubDate && focusRefDate && (
+            <span className="text-slate-500 text-sm">
+              Publicado em: {focusPubDate} · Dados até: {focusRefDate}
+            </span>
           )}
         </div>
 
