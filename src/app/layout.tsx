@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="border-b border-slate-800 bg-gray-950/95 backdrop-blur sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center">
             <nav className="flex-1 flex items-center justify-center gap-6 text-sm text-slate-400">
-              <Link href="/boletim-focus" className="hover:text-white transition-colors">Macro</Link>
+              <Link href="/boletim-focus" className="hover:text-white transition-colors">Boletim Focus</Link>
               <Link href="/setorial" className="hover:text-white transition-colors">Setorial</Link>
               <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
               <Link href="/graficos" className="hover:text-white transition-colors">Gráficos</Link>
