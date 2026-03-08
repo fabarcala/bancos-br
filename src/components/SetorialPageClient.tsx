@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { MultiSeriesChart, SingleLineChart, KPICard } from './SetorialChart'
 import { fetchSetorialDataClient, type SetorialData } from '@/lib/setorialFetch'
+import { InfoTooltip } from './InfoTooltip'
 
 function Skeleton({ height = 240 }: { height?: number }) {
   return <div className="animate-pulse bg-slate-800/60 rounded-xl w-full" style={{ height }} />
@@ -39,10 +40,10 @@ export default function SetorialPageClient() {
       {/* KPI cards */}
       <section className="mb-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard label="Carteira Total SFN" value={data ? latestValue(data.carteiraTotal) : null} unit="R$ bi" color="#60a5fa" />
-          <KPICard label="Inadimplência Total" value={data ? latestValue(data.inadimTotal) : null} unit="%" sub="> 90 dias" color="#f87171" />
-          <KPICard label="Taxa Média Total" value={data ? latestValue(data.taxaTotal) : null} unit="% a.a." color="#fb923c" />
-          <KPICard label="Inadimplência PF" value={data ? latestValue(data.inadimPF) : null} unit="%" sub="Pessoas Físicas" color="#f472b6" />
+          <KPICard label={<>Carteira Total SFN</>} value={data ? latestValue(data.carteiraTotal) : null} unit="R$ bi" color="#60a5fa" />
+          <KPICard label={<>Inadimplência Total<InfoTooltip term="Inadimplência" /></>} value={data ? latestValue(data.inadimTotal) : null} unit="%" sub="> 90 dias" color="#f87171" />
+          <KPICard label={<>Taxa Média Total<InfoTooltip term="Spread" side="bottom" /></>} value={data ? latestValue(data.taxaTotal) : null} unit="% a.a." color="#fb923c" />
+          <KPICard label={<>Inadimplência PF<InfoTooltip term="Inadimplência" side="bottom" /></>} value={data ? latestValue(data.inadimPF) : null} unit="%" sub="Pessoas Físicas" color="#f472b6" />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { InfoTooltip } from './InfoTooltip'
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer
@@ -25,33 +26,33 @@ const ALL_BANKS: { id: string; label: string; data: BankData; color: string }[] 
 
 /* ─── Metrics ────────────────────────────────────────────────── */
 type Fmt = 'pct' | 'milhoes' | 'bilhoes'
-interface Metric { label: string; key: string; fmt: Fmt }
+interface Metric { label: string; key: string; fmt: Fmt; term?: string }
 
 const METRICS: Metric[] = [
   // Indicadores
-  { label: 'ROAE (%)',                        key: 'indicadores.roae_consolidado_pct',        fmt: 'pct'     },
-  { label: 'ROAA (%)',                        key: 'indicadores.roaa_pct',                    fmt: 'pct'     },
-  { label: 'Índice de Eficiência (%)',        key: 'indicadores.indice_eficiencia_pct',       fmt: 'pct'     },
-  { label: 'NIM Clientes (%)',                key: 'indicadores.nim_clientes_pct',            fmt: 'pct'     },
+  { label: 'ROAE (%)',                        key: 'indicadores.roae_consolidado_pct',           fmt: 'pct',     term: 'ROAE'     },
+  { label: 'ROAA (%)',                        key: 'indicadores.roaa_pct',                       fmt: 'pct',     term: 'ROAA'     },
+  { label: 'Índice de Eficiência (%)',        key: 'indicadores.indice_eficiencia_pct',          fmt: 'pct',     term: 'IE'       },
+  { label: 'NIM Clientes (%)',                key: 'indicadores.nim_clientes_pct',               fmt: 'pct',     term: 'NIM'      },
   // Qualidade
-  { label: 'NPL >90 dias (%)',                key: 'qualidade.npl_90d_total_pct',             fmt: 'pct'     },
-  { label: 'PDD / Carteira (%)',              key: 'qualidade.custo_credito_sobre_carteira_pct', fmt: 'pct'  },
+  { label: 'NPL >90 dias (%)',                key: 'qualidade.npl_90d_total_pct',                fmt: 'pct',     term: 'NPL'      },
+  { label: 'PDD / Carteira (%)',              key: 'qualidade.custo_credito_sobre_carteira_pct', fmt: 'pct',     term: 'PDD'      },
   // Capital
-  { label: 'Basileia (%)',                    key: 'capital.basileia_pct',                    fmt: 'pct'     },
-  { label: 'CET1 (%)',                        key: 'capital.cet1_pct',                        fmt: 'pct'     },
-  { label: 'Nível I (%)',                     key: 'capital.nivel_i_pct',                     fmt: 'pct'     },
+  { label: 'Basileia (%)',                    key: 'capital.basileia_pct',                       fmt: 'pct',     term: 'Basileia' },
+  { label: 'CET1 (%)',                        key: 'capital.cet1_pct',                           fmt: 'pct',     term: 'CET1'     },
+  { label: 'Nível I (%)',                     key: 'capital.nivel_i_pct',                        fmt: 'pct',     term: 'Nível I'  },
   // DRE
-  { label: 'Lucro Líquido (R$ mi)',           key: 'dre.resultado_recorrente_gerencial',      fmt: 'milhoes' },
-  { label: 'Receitas Totais (R$ mi)',         key: 'dre.receitas_totais',                     fmt: 'milhoes' },
-  { label: 'Margem Financeira (R$ mi)',       key: 'dre.margem_financeira',                   fmt: 'milhoes' },
-  { label: 'MF com Clientes (R$ mi)',         key: 'dre.margem_financeira_clientes',          fmt: 'milhoes' },
-  { label: 'Custo do Crédito (R$ mi)',        key: 'dre.custo_credito',                       fmt: 'milhoes' },
-  { label: 'Outras Desp. Operac. (R$ mi)',    key: 'dre.outras_despesas_operacionais',        fmt: 'milhoes' },
+  { label: 'Lucro Líquido (R$ mi)',           key: 'dre.resultado_recorrente_gerencial',         fmt: 'milhoes'  },
+  { label: 'Receitas Totais (R$ mi)',         key: 'dre.receitas_totais',                        fmt: 'milhoes'  },
+  { label: 'Margem Financeira (R$ mi)',       key: 'dre.margem_financeira',                      fmt: 'milhoes'  },
+  { label: 'MF com Clientes (R$ mi)',         key: 'dre.margem_financeira_clientes',             fmt: 'milhoes', term: 'NIM'      },
+  { label: 'Custo do Crédito (R$ mi)',        key: 'dre.custo_credito',                          fmt: 'milhoes', term: 'PDD'      },
+  { label: 'Outras Desp. Operac. (R$ mi)',    key: 'dre.outras_despesas_operacionais',           fmt: 'milhoes'  },
   // Carteira
-  { label: 'Carteira Total (R$ bi)',          key: 'carteira.total',                          fmt: 'bilhoes' },
-  { label: 'Carteira PF (R$ bi)',             key: 'carteira.pessoas_fisicas',                fmt: 'bilhoes' },
-  { label: 'Carteira MPMEs (R$ bi)',          key: 'carteira.mpmes',                          fmt: 'bilhoes' },
-  { label: 'Carteira GE (R$ bi)',             key: 'carteira.grandes_empresas',               fmt: 'bilhoes' },
+  { label: 'Carteira Total (R$ bi)',          key: 'carteira.total',                             fmt: 'bilhoes'  },
+  { label: 'Carteira PF (R$ bi)',             key: 'carteira.pessoas_fisicas',                   fmt: 'bilhoes'  },
+  { label: 'Carteira MPMEs (R$ bi)',          key: 'carteira.mpmes',                             fmt: 'bilhoes', term: 'MPMEs'    },
+  { label: 'Carteira GE (R$ bi)',             key: 'carteira.grandes_empresas',                  fmt: 'bilhoes'  },
 ]
 
 /* ─── Helpers ────────────────────────────────────────────────── */
@@ -174,7 +175,10 @@ export default function GraficoPanel({ defaultMetricKey, defaultBanks }: Props) 
 
       {/* Metric selector */}
       <div>
-        <label className="text-xs text-slate-500 uppercase tracking-wide mb-1 block">Métrica</label>
+        <label className="text-xs text-slate-500 uppercase tracking-wide mb-1 flex items-center">
+          Métrica
+          {metric.term && <InfoTooltip term={metric.term} side="bottom" />}
+        </label>
         <select
           value={metricKey}
           onChange={e => setMetricKey(e.target.value)}

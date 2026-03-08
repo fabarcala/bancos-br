@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useState, useEffect } from 'react'
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis,
@@ -184,7 +185,7 @@ export function MultiSeriesChart({
 export function KPICard({
   label, value, unit, sub, color = '#60a5fa',
 }: {
-  label: string
+  label: React.ReactNode
   value: number | null
   unit: string
   sub?: string
