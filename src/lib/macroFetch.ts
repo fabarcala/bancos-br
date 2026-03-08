@@ -20,7 +20,7 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
   { key: 'Selic',               label: 'Selic',                          unit: '% a.a.', decimals: 2 },
   { key: 'IGP-M',               label: 'IGP-M',                          unit: '%',      decimals: 2 },
   { key: 'IPCA Administrados',  label: 'IPCA Administrados',              unit: '%',      decimals: 2 },
-  { key: 'DLSP',                label: 'DLSP (% do PIB)',                 unit: '%',      decimals: 1 },
+  { key: 'Dívida líquida do setor público', label: 'Dívida líquida do setor público (% do PIB)', unit: '%', decimals: 1 },
   { key: 'Resultado primário',  label: 'Resultado primário (% do PIB)',   unit: '%',      decimals: 2 },
   { key: 'Resultado nominal',   label: 'Resultado nominal (% do PIB)',    unit: '%',      decimals: 2 },
 ]
@@ -208,7 +208,7 @@ export async function fetchMacroDataClient(): Promise<{
     'Câmbio': cambioHist,
     'Selic': selicHist,
     'IGP-M': igpmHist,
-    'DLSP': dlspHist,
+    'Dívida líquida do setor público': dlspHist,
     'Resultado primário': primHist,
     'Resultado nominal': nomHist,
   }
@@ -218,7 +218,7 @@ export async function fetchMacroDataClient(): Promise<{
   // Linha 2: Câmbio · PIB
   // Linha 3: IGP-M · DLSP
   // Linha 4: Resultado primário · Resultado nominal
-  const chartKeys = ['Selic', 'IPCA', 'Câmbio', 'PIB Total', 'IGP-M', 'DLSP', 'Resultado primário', 'Resultado nominal']
+  const chartKeys = ['Selic', 'IPCA', 'Câmbio', 'PIB Total', 'IGP-M', 'Dívida líquida do setor público', 'Resultado primário', 'Resultado nominal']
   const chartIndicators = chartKeys.map(key => MACRO_INDICATORS.find(i => i.key === key)!)
 
   const chartSeries: MacroChartSeries[] = chartIndicators.map(ind => {
