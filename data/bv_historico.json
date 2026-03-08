@@ -1,14 +1,14 @@
 {
   "banco": "BV",
   "ticker": "BV",
-  "nota": "BV = Banco Votorantim. Carteira: Atacado mapeado em grandes_empresas; Varejo (PF + MPMEs) em pessoas_fisicas. DRE gerencial com reclassificações publicadas pelo banco.",
+  "nota": "Banco Votorantim. Carteira: Atacado Ampliado em grandes_empresas; Varejo (PF + MPMEs) em pessoas_fisicas; veiculos = Veículos Leves Usados; credito_pessoal = EGV (Empréstimo com Garantia Veicular).",
   "trimestres": {
     "4T24": {
       "dre": {
         "receitas_totais": 3214,
         "margem_financeira": 2519,
-        "margem_financeira_clientes": null,
-        "margem_financeira_mercado": null,
+        "margem_financeira_clientes": 2367,
+        "margem_financeira_mercado": 152,
         "receitas_prestacao_servicos": 695,
         "resultado_seguros_prev_cap": null,
         "custo_credito": -776,
@@ -17,7 +17,7 @@
         "recuperacao_creditos_baixados": null,
         "outras_despesas_operacionais": -1015,
         "desp_nao_decorrentes_juros": null,
-        "desp_tributarias_iss_pis_cofins": null,
+        "desp_tributarias_iss_pis_cofins": -185,
         "ir_cs": 82,
         "participacoes_minoritarias": -16,
         "resultado_recorrente_gerencial": 542
@@ -32,10 +32,10 @@
       "carteira": {
         "total": 90.5,
         "pessoas_fisicas": 61.6,
-        "cartao_credito": null,
-        "credito_pessoal": null,
+        "cartao_credito": 4.8,
+        "credito_pessoal": 4.0,
         "consignado": null,
-        "veiculos": null,
+        "veiculos": 42.2,
         "imobiliario": null,
         "mpmes": null,
         "grandes_empresas": 28.9,
@@ -43,7 +43,7 @@
       },
       "qualidade": {
         "npl_90d_total_pct": 4.4,
-        "custo_credito_sobre_carteira_pct": null
+        "custo_credito_sobre_carteira_pct": 3.4
       },
       "capital": {
         "patrimonio_referencia": 13888,
@@ -61,8 +61,8 @@
       "dre": {
         "receitas_totais": 2987,
         "margem_financeira": 2370,
-        "margem_financeira_clientes": null,
-        "margem_financeira_mercado": null,
+        "margem_financeira_clientes": 2052,
+        "margem_financeira_mercado": 318,
         "receitas_prestacao_servicos": 618,
         "resultado_seguros_prev_cap": null,
         "custo_credito": -868,
@@ -71,7 +71,7 @@
         "recuperacao_creditos_baixados": null,
         "outras_despesas_operacionais": -922,
         "desp_nao_decorrentes_juros": null,
-        "desp_tributarias_iss_pis_cofins": null,
+        "desp_tributarias_iss_pis_cofins": -199,
         "ir_cs": -244,
         "participacoes_minoritarias": -19,
         "resultado_recorrente_gerencial": 480
@@ -87,9 +87,9 @@
         "total": 90.4,
         "pessoas_fisicas": 64.7,
         "cartao_credito": null,
-        "credito_pessoal": null,
+        "credito_pessoal": 4.2,
         "consignado": null,
-        "veiculos": null,
+        "veiculos": 44.6,
         "imobiliario": null,
         "mpmes": null,
         "grandes_empresas": 25.7,
@@ -97,7 +97,7 @@
       },
       "qualidade": {
         "npl_90d_total_pct": 4.9,
-        "custo_credito_sobre_carteira_pct": null
+        "custo_credito_sobre_carteira_pct": 3.8
       },
       "capital": {
         "patrimonio_referencia": 13548,
@@ -115,8 +115,8 @@
       "dre": {
         "receitas_totais": 2867,
         "margem_financeira": 2311,
-        "margem_financeira_clientes": null,
-        "margem_financeira_mercado": null,
+        "margem_financeira_clientes": 2079,
+        "margem_financeira_mercado": 232,
         "receitas_prestacao_servicos": 556,
         "resultado_seguros_prev_cap": null,
         "custo_credito": -907,
@@ -125,7 +125,7 @@
         "recuperacao_creditos_baixados": null,
         "outras_despesas_operacionais": -913,
         "desp_nao_decorrentes_juros": null,
-        "desp_tributarias_iss_pis_cofins": null,
+        "desp_tributarias_iss_pis_cofins": -187,
         "ir_cs": -154,
         "participacoes_minoritarias": -17,
         "resultado_recorrente_gerencial": 459
@@ -140,10 +140,10 @@
       "carteira": {
         "total": 91.3,
         "pessoas_fisicas": 65.3,
-        "cartao_credito": null,
-        "credito_pessoal": null,
+        "cartao_credito": 4.8,
+        "credito_pessoal": 4.5,
         "consignado": null,
-        "veiculos": null,
+        "veiculos": 44.7,
         "imobiliario": null,
         "mpmes": null,
         "grandes_empresas": 26.0,
@@ -151,7 +151,7 @@
       },
       "qualidade": {
         "npl_90d_total_pct": 5.5,
-        "custo_credito_sobre_carteira_pct": null
+        "custo_credito_sobre_carteira_pct": 4.0
       },
       "capital": {
         "patrimonio_referencia": 14235,
@@ -169,8 +169,8 @@
       "dre": {
         "receitas_totais": 2919,
         "margem_financeira": 2295,
-        "margem_financeira_clientes": null,
-        "margem_financeira_mercado": null,
+        "margem_financeira_clientes": 2051,
+        "margem_financeira_mercado": 244,
         "receitas_prestacao_servicos": 624,
         "resultado_seguros_prev_cap": null,
         "custo_credito": -880,
@@ -179,7 +179,7 @@
         "recuperacao_creditos_baixados": null,
         "outras_despesas_operacionais": -919,
         "desp_nao_decorrentes_juros": null,
-        "desp_tributarias_iss_pis_cofins": null,
+        "desp_tributarias_iss_pis_cofins": -116,
         "ir_cs": -44,
         "participacoes_minoritarias": -25,
         "resultado_recorrente_gerencial": 461
@@ -194,10 +194,10 @@
       "carteira": {
         "total": 92.6,
         "pessoas_fisicas": 65.9,
-        "cartao_credito": null,
-        "credito_pessoal": null,
+        "cartao_credito": 4.8,
+        "credito_pessoal": 4.8,
         "consignado": null,
-        "veiculos": null,
+        "veiculos": 44.9,
         "imobiliario": null,
         "mpmes": null,
         "grandes_empresas": 26.7,
@@ -205,7 +205,7 @@
       },
       "qualidade": {
         "npl_90d_total_pct": 4.8,
-        "custo_credito_sobre_carteira_pct": null
+        "custo_credito_sobre_carteira_pct": 3.8
       },
       "capital": {
         "patrimonio_referencia": 14704,
@@ -223,17 +223,17 @@
       "dre": {
         "receitas_totais": 3136,
         "margem_financeira": 2304,
-        "margem_financeira_clientes": null,
-        "margem_financeira_mercado": null,
+        "margem_financeira_clientes": 2131,
+        "margem_financeira_mercado": 172,
         "receitas_prestacao_servicos": 832,
         "resultado_seguros_prev_cap": null,
         "custo_credito": -1029,
         "despesa_perda_esperada": null,
         "descontos_concedidos": null,
         "recuperacao_creditos_baixados": null,
-        "outras_despesas_operacionais": -1091,
+        "outras_despesas_operacionais": -1072,
         "desp_nao_decorrentes_juros": null,
-        "desp_tributarias_iss_pis_cofins": null,
+        "desp_tributarias_iss_pis_cofins": -75,
         "ir_cs": 64,
         "participacoes_minoritarias": -6,
         "resultado_recorrente_gerencial": 465
@@ -248,10 +248,10 @@
       "carteira": {
         "total": 97.7,
         "pessoas_fisicas": 69.3,
-        "cartao_credito": null,
-        "credito_pessoal": null,
+        "cartao_credito": 5.2,
+        "credito_pessoal": 5.3,
         "consignado": null,
-        "veiculos": null,
+        "veiculos": 46.9,
         "imobiliario": null,
         "mpmes": null,
         "grandes_empresas": 28.3,
@@ -259,7 +259,7 @@
       },
       "qualidade": {
         "npl_90d_total_pct": 4.7,
-        "custo_credito_sobre_carteira_pct": null
+        "custo_credito_sobre_carteira_pct": 4.3
       },
       "capital": {
         "patrimonio_referencia": 15039,
