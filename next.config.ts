@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: '/macro',
+        destination: '/boletim-focus',
+        permanent: true, // 301
+      },
+    ]
+  },
 };
 
 export default nextConfig;

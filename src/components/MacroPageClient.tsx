@@ -25,15 +25,29 @@ export default function MacroPageClient() {
   return (
     <div>
       {/* Hero */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-1">Indicadores Macroeconômicos</h1>
-        <p className="text-slate-400 text-lg mb-0.5">Histórico e Expectativas de Mercado</p>
-        <p className="text-slate-500 text-sm mb-0.5">Boletim Focus: Mediana dos analistas</p>
-        {focusDate && (
-          <p className="text-slate-500 text-sm">
-            Última publicação: {focusDate}
-          </p>
-        )}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-white mb-1">Boletim Focus — Projeções e Histórico Macroeconômico</h1>
+        <p className="text-slate-400 text-lg mb-2">Mediana das expectativas de mercado · Banco Central do Brasil</p>
+
+        {/* Badge + data */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="inline-flex items-center gap-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium px-3 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse inline-block" />
+            Atualizado toda segunda-feira
+          </span>
+          {focusDate && (
+            <span className="text-slate-500 text-sm">Última publicação: {focusDate}</span>
+          )}
+        </div>
+
+        {/* Bloco explicativo SEO */}
+        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
+          O Boletim Focus é publicado pelo Banco Central do Brasil toda segunda-feira, consolidando as expectativas de mercado.
+          O relatório reúne a mediana das projeções de analistas e economistas para os principais indicadores da economia brasileira:
+          IPCA, taxa Selic, PIB, câmbio (R$/US$), IGP-M, dívida líquida do setor público e resultados primário e nominal —
+          para o ano corrente e os três anos subsequentes. Os gráficos abaixo combinam o histórico realizado de cada indicador
+          com as projeções mais recentes do Boletim Focus.
+        </p>
       </div>
 
       {error && (
