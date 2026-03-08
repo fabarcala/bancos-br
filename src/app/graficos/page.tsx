@@ -1,8 +1,8 @@
 import GraficoPanel from '@/components/GraficoPanel'
 
 export const metadata = {
-  title: 'Gráficos | Bancos BR',
-  description: 'Comparativo gráfico de indicadores dos principais bancos brasileiros',
+  title: 'Gráficos comparativos de bancos brasileiros | BancosBR',
+  description: 'Compare ROAE, Basileia, NPL, NIM e outros indicadores dos principais bancos do Brasil em gráficos interativos por trimestre.',
 }
 
 export default function GraficosPage() {

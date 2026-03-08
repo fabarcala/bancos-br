@@ -4,6 +4,11 @@ import BancosComparativo from '@/components/BancosComparativo'
 
 export const revalidate = 3600
 
+export const metadata = {
+  title: 'Comparativo de resultados — Itaú, Bradesco, Santander, BB, BV | BancosBR',
+  description: 'Comparativo trimestral de DRE, indicadores, carteira de crédito e capital dos principais bancos brasileiros listados na B3.',
+}
+
 function loadBank(filename: string) {
   const path = join(process.cwd(), 'data', filename)
   return JSON.parse(readFileSync(path, 'utf-8'))
