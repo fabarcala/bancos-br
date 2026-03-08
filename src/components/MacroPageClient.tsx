@@ -30,13 +30,18 @@ export default function MacroPageClient() {
     <div>
       {/* Hero */}
       <div className="mb-10">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="flex items-center gap-3 mb-1">
           <TrendingUp className="w-6 h-6 text-blue-400" />
           <h1 className="text-3xl font-bold text-white">Indicadores Macroeconômicos</h1>
         </div>
-        <p className="text-slate-400 text-lg">
-          Expectativas de mercado (Boletim Focus) e evolução histórica dos principais indicadores da economia brasileira.
+        <p className="text-slate-400 text-lg mb-1">
+          Histórico e Projeções (Boletim Focus)
         </p>
+        {focusDate && (
+          <p className="text-slate-500 text-sm">
+            Última publicação: {focusDate}
+          </p>
+        )}
       </div>
 
       {error && (
