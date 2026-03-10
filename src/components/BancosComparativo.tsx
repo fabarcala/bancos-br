@@ -179,6 +179,23 @@ function computeLTM(bank: BankData, endQuarter: string): Trimestre | null {
   return result
 }
 
+/* ─── Cor por banco ─────────────────────────────────────────────── */
+const BANK_COLORS: Record<string, string> = {
+  'Itaú':       '#ff8800',
+  'Bradesco':   '#cc0000',
+  'Santander':  '#ec0000',
+  'BV':         '#00bfae',
+  'BTG':        '#d4af37',
+  'BB':         '#f5d000',
+}
+
+function getBankColor(banco: string): string {
+  for (const [key, color] of Object.entries(BANK_COLORS)) {
+    if (banco.toLowerCase().includes(key.toLowerCase())) return color
+  }
+  return '#6366f1'
+}
+
 /* ─── Component ─────────────────────────────────────────────────── */
 interface Props { banks: BankData[] }
 
@@ -193,6 +210,26 @@ export default function BancosComparativo({ banks }: Props) {
   const [periodA, setPeriodA] = useState<string>(allQuarters[allQuarters.length - 2] ?? allQuarters[0])
   const [periodB, setPeriodB] = useState<string>(allQuarters[allQuarters.length - 1] ?? allQuarters[0])
 
+  // Seleção de bancos — default: apenas os 2 primeiros
+  const [selectedBanks, setSelectedBanks] = useState<Set<string>>(
+    new Set(banks.slice(0, 2).map(b => b.ticker))
+  )
+
+  const toggleBank = (ticker: string) => {
+    setSelectedBanks(prev => {
+      const next = new Set(prev)
+      if (next.has(ticker)) {
+        if (next.size === 1) return prev // mínimo 1 banco selecionado
+        next.delete(ticker)
+      } else {
+        next.add(ticker)
+      }
+      return next
+    })
+  }
+
+  const visibleBanks = banks.filter(b => selectedBanks.has(b.ticker))
+
   // For LTM: end quarter options = quarters where at least one bank has 4+ prior quarters
   const ltmOptions = allQuarters.filter((_, i) => i >= 3)
 
@@ -205,6 +242,43 @@ export default function BancosComparativo({ banks }: Props) {
 
   return (
     <div className="space-y-3">
+      {/* ── Seletor de Bancos ── */}
+      <div className="bg-gray-800 rounded-xl p-4">
+        <p className="text-xs text-gray-400 mb-3 font-medium uppercase tracking-wider">Bancos</p>
+        <div className="flex flex-wrap gap-2">
+          {banks.map(bank => {
+            const isSelected = selectedBanks.has(bank.ticker)
+            const color = getBankColor(bank.banco)
+            return (
+              <button
+                key={bank.ticker}
+                onClick={() => toggleBank(bank.ticker)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
+                  isSelected
+                    ? 'text-white border-transparent'
+                    : 'bg-gray-900 text-gray-500 border-gray-700 hover:text-gray-300 hover:border-gray-500'
+                }`}
+                style={isSelected ? { backgroundColor: color + '22', borderColor: color, color } : {}}
+              >
+                <span
+                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: isSelected ? color : '#4b5563' }}
+                />
+                {bank.banco}
+                <span className="text-xs opacity-60">{bank.ticker}</span>
+              </button>
+            )
+          })}
+          {/* Botão selecionar todos */}
+          <button
+            onClick={() => setSelectedBanks(new Set(banks.map(b => b.ticker)))}
+            className="px-3 py-2 rounded-lg text-xs text-gray-500 border border-gray-700 hover:text-gray-300 hover:border-gray-500 transition-all ml-auto"
+          >
+            Todos
+          </button>
+        </div>
+      </div>
+
       {/* ── Controls ── */}
       <div className="flex flex-wrap gap-3 items-center bg-gray-800 rounded-xl p-4">
         {/* Toggle */}
@@ -251,7 +325,7 @@ export default function BancosComparativo({ banks }: Props) {
 
       {/* ── Table ── */}
       <div className="overflow-x-auto rounded-xl border border-gray-700">
-        <table className="text-sm border-collapse" style={{ minWidth: `${280 + banks.length * 310}px` }}>
+        <table className="text-sm border-collapse" style={{ minWidth: `${280 + visibleBanks.length * 310}px` }}>
           <thead>
             {/* Row 1: bank names */}
             <tr className="bg-gray-800 border-b border-gray-700">
@@ -259,13 +333,16 @@ export default function BancosComparativo({ banks }: Props) {
                   style={{ minWidth: '260px', width: '260px' }}>
                 R$ milhões (exceto onde indicado)
               </th>
-              {banks.map(bank => (
-                <th key={`${bank.ticker}-name`} colSpan={3}
-                    className="text-center px-3 py-2 text-sm text-gray-300 font-semibold tracking-wide"
-                    style={{ borderRight: '1px solid #374151' }}>
-                  {bank.banco}
-                </th>
-              ))}
+              {visibleBanks.map(bank => {
+                const color = getBankColor(bank.banco)
+                return (
+                  <th key={`${bank.ticker}-name`} colSpan={3}
+                      className="text-center px-3 py-2 text-sm font-semibold tracking-wide"
+                      style={{ borderRight: '1px solid #374151', color }}>
+                    {bank.banco}
+                  </th>
+                )
+              })}
             </tr>
             {/* Row 2: periods */}
             <tr className="bg-gray-800 border-b border-gray-700">
@@ -273,7 +350,7 @@ export default function BancosComparativo({ banks }: Props) {
                   style={{ minWidth: '260px', width: '260px' }}>
                 Indicador
               </th>
-              {banks.map(bank => (
+              {visibleBanks.map(bank => (
                 <>
                   <th key={`${bank.ticker}-a`}
                       className="text-right px-3 py-2 text-gray-400 font-medium tabular-nums"
@@ -299,7 +376,7 @@ export default function BancosComparativo({ banks }: Props) {
               <>
                 {/* Section header */}
                 <tr key={`sec-${section.title}`} className="border-t-2 border-gray-600 bg-gray-900">
-                  <td colSpan={1 + banks.length * 3}
+                  <td colSpan={1 + visibleBanks.length * 3}
                       className="sticky left-0 z-10 bg-gray-900 px-4 py-2 text-xs font-bold uppercase tracking-widest text-blue-400">
                     {section.title}
                   </td>
@@ -317,7 +394,7 @@ export default function BancosComparativo({ banks }: Props) {
                       </td>
 
                       {/* Per bank */}
-                      {banks.map(bank => {
+                      {visibleBanks.map(bank => {
                         const tA = getT(bank, periodA)
                         const tB = getT(bank, periodB)
                         const vA = getVal(tA, row.key)
