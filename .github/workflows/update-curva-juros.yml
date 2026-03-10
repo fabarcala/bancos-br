@@ -1,0 +1,29 @@
+name: Atualizar Curva de Juros (ANBIMA)
+
+on:
+  schedule:
+    # Roda de seg a sex às 21h BRT (00h UTC) — após fechamento do mercado
+    - cron: '0 0 * * 1-5'
+  workflow_dispatch:  # permite rodar manualmente
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Buscar curva da ANBIMA
+        run: python scripts/fetch_curva_juros.py
+
+      - name: Commit e push (se houver mudança)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/curva_juros.json
+          git diff --cached --quiet || git commit -m "data: curva de juros $(date +%d/%m/%Y)"
+          git push

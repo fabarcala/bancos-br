@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center">
             <nav className="flex-1 flex items-center justify-center gap-6 text-sm text-slate-400">
               <Link href="/boletim-focus" className="hover:text-white transition-colors">Boletim Focus</Link>
+              <Link href="/curva-juros" className="hover:text-white transition-colors">Curva de Juros</Link>
               <Link href="/setorial" className="hover:text-white transition-colors">Setorial</Link>
               <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
               <Link href="/graficos" className="hover:text-white transition-colors">Gráficos</Link>
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Footer */}
         <footer className="border-t border-slate-800 mt-16 py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center text-slate-500 text-sm">
-            <p>Fontes: Banco Central do Brasil (SGS e Boletim Focus) · Earnings releases dos bancos (Itaú, Bradesco, Santander, BV).</p>
+            <p>Fontes: Banco Central do Brasil (SGS e Boletim Focus) · ANBIMA (Curva de Juros) · Earnings releases dos bancos (Itaú, Bradesco, Santander, BV).</p>
           </div>
         </footer>
       </body>
