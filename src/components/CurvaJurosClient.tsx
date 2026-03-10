@@ -17,22 +17,37 @@ type CurvaData = {
   updated: string
 }
 
-// Gera degradê de azul: mais escuro = mais recente
+// Gera paleta com alto contraste: antigas em cinza claro, recente em azul forte
 function gerarCores(n: number): string[] {
-  // do mais claro (#93c5fd) ao mais escuro (#1d4ed8)
-  const cores = [
-    '#bfdbfe', // 10 — mais antiga
-    '#93c5fd',
-    '#7ab8fb',
-    '#60a5fa',
-    '#4d95f9',
-    '#3b82f6',
-    '#2f73e8',
-    '#2563eb',
-    '#1d53d4',
-    '#1d4ed8', // 1 — mais recente
+  // 10 tons: começa em cinza desbotado, vai escurecendo até azul vivo
+  const todas = [
+    '#334155', // 10 — mais antiga (cinza escuro apagado)
+    '#3d5068',
+    '#3a5f7a',
+    '#2e6e8c',
+    '#207d9e',
+    '#148cb0',
+    '#0e9cc8',
+    '#07aee0',
+    '#03bef5',
+    '#1d4ed8', // 1 — mais recente (azul forte)
   ]
-  return cores.slice(cores.length - n)
+  return todas.slice(todas.length - n)
+}
+
+// Retorna a opacidade da linha: antigas mais transparentes, recente opaca
+function gerarOpacidade(i: number, total: number): number {
+  // i=0 é a mais antiga, i=total-1 é a mais recente
+  const min = 0.25
+  const max = 1.0
+  return min + (max - min) * (i / (total - 1))
+}
+
+// Retorna espessura: antigas finas, recente grossa
+function gerarEspessura(i: number, total: number): number {
+  if (i === total - 1) return 3    // mais recente
+  if (i === total - 2) return 1.8  // segunda mais recente
+  return 1.2
 }
 
 // Tick customizado com duas linhas: dias úteis + label legível
@@ -137,20 +152,29 @@ export default function CurvaJurosClient({ data }: { data: CurvaData }) {
       <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
         {/* Legenda de datas (mais antiga → mais recente) */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          {curvas.map((c, i) => (
-            <div key={c.data} className="flex items-center gap-1.5">
-              <span
-                className="w-8 h-0.5 inline-block rounded"
-                style={{ background: cores[i], height: '3px' }}
-              />
-              <span className="text-xs" style={{ color: cores[i] }}>
-                {c.data}
-                {i === curvas.length - 1 && (
-                  <span className="ml-1 text-blue-300 font-semibold">(mais recente)</span>
-                )}
-              </span>
-            </div>
-          ))}
+          {curvas.map((c, i) => {
+            const isRecente = i === curvas.length - 1
+            const opacidade = gerarOpacidade(i, curvas.length)
+            return (
+              <div key={c.data} className="flex items-center gap-1.5">
+                <span
+                  className="inline-block rounded"
+                  style={{
+                    background: cores[i],
+                    opacity: opacidade,
+                    width: isRecente ? 28 : 20,
+                    height: isRecente ? 3 : 2,
+                  }}
+                />
+                <span className="text-xs" style={{ color: cores[i], opacity: Math.max(opacidade, 0.6) }}>
+                  {c.data}
+                  {isRecente && (
+                    <span className="ml-1 text-blue-400 font-bold opacity-100">★</span>
+                  )}
+                </span>
+              </div>
+            )
+          })}
         </div>
 
         <ResponsiveContainer width="100%" height={420}>
@@ -187,9 +211,10 @@ export default function CurvaJurosClient({ data }: { data: CurvaData }) {
                 type="monotone"
                 dataKey={c.data}
                 stroke={cores[i]}
-                strokeWidth={i === curvas.length - 1 ? 2.5 : 1.5}
+                strokeWidth={gerarEspessura(i, curvas.length)}
+                strokeOpacity={gerarOpacidade(i, curvas.length)}
                 dot={false}
-                activeDot={{ r: 4, strokeWidth: 0 }}
+                activeDot={{ r: 5, strokeWidth: 0 }}
               />
             ))}
           </LineChart>
