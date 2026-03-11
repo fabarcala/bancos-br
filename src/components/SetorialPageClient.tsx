@@ -141,39 +141,86 @@ export default function SetorialPageClient() {
       {/* KPI cards */}
       <section className="mb-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* 1. Concessões */}
-          <KPICard label={<>Concessões PF</>}
-            value={data ? latest(data.pfConcessoes) : null} unit="R$ mi" sub="no mês" color="#60a5fa" />
 
-          {/* 2. Card duplo: Saldo PF (top) + Carteira Total SFN (bottom) */}
-          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col">
-            <div className="flex-1 px-5 pt-4 pb-3 border-b border-slate-700/50">
-              <p className="text-xs text-slate-400 mb-1.5">Saldo Carteira PF</p>
-              <p className="text-xl font-bold text-blue-400">
+          {/* 1. Concessões — R$ 331,2mi inline */}
+          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl px-5 py-4">
+            <p className="text-xs text-slate-400 mb-2">Concessões PF</p>
+            <p className="text-2xl font-bold text-blue-400">
+              {data
+                ? (() => {
+                    const v = latest(data.pfConcessoes)
+                    if (v === null) return '—'
+                    return v >= 1000
+                      ? `R$ ${(v / 1000).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}bi`
+                      : `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}mi`
+                  })()
+                : <span className="animate-pulse text-slate-600">—</span>}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">no mês</p>
+          </div>
+
+          {/* 2. Card duplo lado a lado: Saldo PF | Carteira Total SFN */}
+          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden flex">
+            {/* Esquerda — Saldo PF */}
+            <div className="flex-1 px-4 py-4 border-r border-slate-700/50">
+              <p className="text-xs text-slate-400 mb-2 leading-tight">Saldo Carteira PF</p>
+              <p className="text-lg font-bold text-blue-400 leading-tight">
                 {data
-                  ? (latest(data.pfSaldo) ?? 0).toLocaleString('pt-BR', { maximumFractionDigits: 0 })
+                  ? (() => {
+                      const v = latest(data.pfSaldo)
+                      if (v === null) return '—'
+                      return `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}bi`
+                    })()
                   : <span className="animate-pulse text-slate-600">—</span>}
               </p>
-              <p className="text-xs text-slate-500 mt-0.5">R$ bi</p>
             </div>
-            <div className="flex-1 px-5 pt-3 pb-4">
-              <p className="text-xs text-slate-400 mb-1.5">Carteira Total SFN</p>
-              <p className="text-xl font-bold text-violet-400">
+            {/* Direita — Carteira Total SFN */}
+            <div className="flex-1 px-4 py-4">
+              <p className="text-xs text-slate-400 mb-2 leading-tight">Carteira Total SFN</p>
+              <p className="text-lg font-bold text-violet-400 leading-tight">
                 {data
-                  ? (latest(data.carteiraTotal) ?? 0).toLocaleString('pt-BR', { maximumFractionDigits: 0 })
+                  ? (() => {
+                      const v = latest(data.carteiraTotal)
+                      if (v === null) return '—'
+                      return `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}bi`
+                    })()
                   : <span className="animate-pulse text-slate-600">—</span>}
               </p>
-              <p className="text-xs text-slate-500 mt-0.5">R$ bi · PF + PJ</p>
             </div>
           </div>
 
-          {/* 3. Taxa Média PF */}
-          <KPICard label={<>Taxa Média PF <InfoTooltip term="Spread" side="bottom" /></>}
-            value={data ? latest(data.pfTaxa) : null} unit="% a.a." color="#fb923c" />
+          {/* 3. Taxa Média PF — 61,0% inline */}
+          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl px-5 py-4">
+            <p className="text-xs text-slate-400 mb-2 flex items-center gap-1">
+              Taxa Média PF <InfoTooltip term="Spread" side="bottom" />
+            </p>
+            <p className="text-2xl font-bold text-orange-400">
+              {data
+                ? (() => {
+                    const v = latest(data.pfTaxa)
+                    return v !== null ? `${v.toFixed(1)}%` : '—'
+                  })()
+                : <span className="animate-pulse text-slate-600">—</span>}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">a.a.</p>
+          </div>
 
-          {/* 4. Inadimplência PF */}
-          <KPICard label={<>Inadimplência PF <InfoTooltip term="Inadimplência" /></>}
-            value={data ? latest(data.pfInadim) : null} unit="%" sub="> 90 dias" color="#f87171" />
+          {/* 4. Inadimplência PF — 6,9% inline */}
+          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl px-5 py-4">
+            <p className="text-xs text-slate-400 mb-2 flex items-center gap-1">
+              Inadimplência PF <InfoTooltip term="Inadimplência" />
+            </p>
+            <p className="text-2xl font-bold text-red-400">
+              {data
+                ? (() => {
+                    const v = latest(data.pfInadim)
+                    return v !== null ? `${v.toFixed(1)}%` : '—'
+                  })()
+                : <span className="animate-pulse text-slate-600">—</span>}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">&gt; 90 dias</p>
+          </div>
+
         </div>
       </section>
 
