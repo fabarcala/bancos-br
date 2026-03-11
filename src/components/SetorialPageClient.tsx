@@ -125,11 +125,21 @@ export default function SetorialPageClient() {
           </span>
         </div>
 
-        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
+        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl mb-3">
           Indicadores mensais de crédito para pessoas físicas publicados pelo Banco Central do Brasil.
           Para cada modalidade são apresentados: volume de concessões no mês, saldo da carteira,
           taxa média de juros e inadimplência (operações com atraso superior a 90 dias).
         </p>
+        {/* Calendário de atualização */}
+        <div className="inline-flex items-center gap-2 bg-slate-800/60 border border-slate-700/50 rounded-lg px-3 py-2 text-xs text-slate-400">
+          <svg className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>
+            Atualização mensal automática · Bacen publica os dados do mês <strong className="text-slate-300">~28 dias após o fechamento</strong>
+            {' '}· Próxima atualização: <strong className="text-slate-300">30 mar 2026</strong> (dados de fev/26)
+          </span>
+        </div>
       </div>
 
       {error && (
