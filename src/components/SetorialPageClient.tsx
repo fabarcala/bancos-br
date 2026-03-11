@@ -141,14 +141,39 @@ export default function SetorialPageClient() {
       {/* KPI cards */}
       <section className="mb-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard label={<>Saldo Carteira PF</>}
-            value={data ? latest(data.pfSaldo) : null} unit="R$ bi" color="#60a5fa" />
+          {/* 1. Concessões */}
+          <KPICard label={<>Concessões PF</>}
+            value={data ? latest(data.pfConcessoes) : null} unit="R$ mi" sub="no mês" color="#60a5fa" />
+
+          {/* 2. Card duplo: Saldo PF (top) + Carteira Total SFN (bottom) */}
+          <div className="bg-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col">
+            <div className="flex-1 px-5 pt-4 pb-3 border-b border-slate-700/50">
+              <p className="text-xs text-slate-400 mb-1.5">Saldo Carteira PF</p>
+              <p className="text-xl font-bold text-blue-400">
+                {data
+                  ? (latest(data.pfSaldo) ?? 0).toLocaleString('pt-BR', { maximumFractionDigits: 0 })
+                  : <span className="animate-pulse text-slate-600">—</span>}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5">R$ bi</p>
+            </div>
+            <div className="flex-1 px-5 pt-3 pb-4">
+              <p className="text-xs text-slate-400 mb-1.5">Carteira Total SFN</p>
+              <p className="text-xl font-bold text-violet-400">
+                {data
+                  ? (latest(data.carteiraTotal) ?? 0).toLocaleString('pt-BR', { maximumFractionDigits: 0 })
+                  : <span className="animate-pulse text-slate-600">—</span>}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5">R$ bi · PF + PJ</p>
+            </div>
+          </div>
+
+          {/* 3. Taxa Média PF */}
           <KPICard label={<>Taxa Média PF <InfoTooltip term="Spread" side="bottom" /></>}
             value={data ? latest(data.pfTaxa) : null} unit="% a.a." color="#fb923c" />
+
+          {/* 4. Inadimplência PF */}
           <KPICard label={<>Inadimplência PF <InfoTooltip term="Inadimplência" /></>}
             value={data ? latest(data.pfInadim) : null} unit="%" sub="> 90 dias" color="#f87171" />
-          <KPICard label={<>Carteira Total SFN</>}
-            value={data ? latest(data.carteiraTotal) : null} unit="R$ bi" sub="PF + PJ" color="#a78bfa" />
         </div>
       </section>
 
