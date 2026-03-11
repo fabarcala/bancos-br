@@ -52,16 +52,15 @@ export type ModalidadePF = {
 }
 
 export type SetorialData = {
-  // Visão Geral
+  // Agregados PF
+  pfConcessoes: SGSPoint[]     // total concessões PF (R$ mi)
+  pfSaldo: SGSPoint[]          // total saldo PF (R$ bi)
+  pfTaxa: SGSPoint[]           // taxa média PF (% a.a.)
+  pfInadim: SGSPoint[]         // inadimplência PF (%)
+  // Visão Geral (mantidos para KPI cards)
   carteiraTotal: SGSPoint[]
-  carteiraPF: SGSPoint[]
-  carteiraPJ: SGSPoint[]
   inadimTotal: SGSPoint[]
-  inadimPF: SGSPoint[]
-  inadimPJ: SGSPoint[]
   taxaTotal: SGSPoint[]
-  taxaPF: SGSPoint[]
-  taxaPJ: SGSPoint[]
   // Modalidades PF
   modalidades: ModalidadePF[]
 }
@@ -71,10 +70,10 @@ export type SetorialData = {
 export async function fetchSetorialDataClient(): Promise<SetorialData> {
 
   const [
-    // Visão Geral
-    carteiraTotal, carteiraPF, carteiraPJ,
-    inadimTotal, inadimPF, inadimPJ,
-    taxaTotal, taxaPF, taxaPJ,
+    // Visão Geral / KPIs
+    carteiraTotal, inadimTotal, taxaTotal,
+    // Agregados PF
+    pfConcessoes, pfSaldo, pfTaxa, pfInadim,
     // Aquisição de Veículos
     vei_con, vei_sal, vei_tax, vei_ina,
     // Consignado Servidores Públicos
@@ -96,10 +95,10 @@ export async function fetchSetorialDataClient(): Promise<SetorialData> {
     // Outros Bens
     out_con, out_sal, out_tax, out_ina,
   ] = await Promise.all([
-    // Visão Geral
-    fetchSGS(20539), fetchSGS(20540), fetchSGS(20541),
-    fetchSGS(21082), fetchSGS(21084), fetchSGS(21083),
-    fetchSGS(20714), fetchSGS(25433), fetchSGS(25434),
+    // Visão Geral / KPIs
+    fetchSGS(20539), fetchSGS(21082), fetchSGS(20714),
+    // Agregados PF
+    fetchSGS(20662), fetchSGS(20570), fetchSGS(20740), fetchSGS(21112),
     // Veículos
     fetchSGS(20673), fetchSGS(20581), fetchSGS(20749), fetchSGS(21121),
     // Consignado Público
@@ -231,10 +230,12 @@ export async function fetchSetorialDataClient(): Promise<SetorialData> {
 
   return {
     carteiraTotal: toBi(carteiraTotal),
-    carteiraPF: toBi(carteiraPF),
-    carteiraPJ: toBi(carteiraPJ),
-    inadimTotal, inadimPF, inadimPJ,
-    taxaTotal, taxaPF, taxaPJ,
+    inadimTotal,
+    taxaTotal,
+    pfConcessoes,
+    pfSaldo: toBi(pfSaldo),
+    pfTaxa,
+    pfInadim,
     modalidades,
   }
 }

@@ -114,9 +114,9 @@ export default function SetorialPageClient() {
       {/* Hero */}
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-white mb-1">
-          Indicadores Setoriais do SFN — Crédito, Inadimplência e Juros
+          Dados Setoriais PF — Crédito por Modalidade
         </h1>
-        <p className="text-slate-400 text-lg mb-2">Evolução mensal por modalidade de crédito · Pessoas Físicas</p>
+        <p className="text-slate-400 text-lg mb-2">Concessões, saldo, taxa de juros e inadimplência · Pessoas Físicas</p>
 
         <div className="flex items-center gap-3 mb-4">
           <span className="inline-flex items-center gap-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium px-3 py-1 rounded-full">
@@ -126,9 +126,9 @@ export default function SetorialPageClient() {
         </div>
 
         <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
-          Indicadores mensais do Sistema Financeiro Nacional publicados pelo Banco Central do Brasil.
-          Para cada modalidade de crédito de pessoas físicas são apresentados: volume de concessões,
-          saldo da carteira, taxa média de juros e inadimplência (operações com atraso superior a 90 dias).
+          Indicadores mensais de crédito para pessoas físicas publicados pelo Banco Central do Brasil.
+          Para cada modalidade são apresentados: volume de concessões no mês, saldo da carteira,
+          taxa média de juros e inadimplência (operações com atraso superior a 90 dias).
         </p>
       </div>
 
@@ -139,31 +139,42 @@ export default function SetorialPageClient() {
       )}
 
       {/* KPI cards */}
-      <section className="mb-12">
+      <section className="mb-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard label={<>Saldo Carteira PF</>}
+            value={data ? latest(data.pfSaldo) : null} unit="R$ bi" color="#60a5fa" />
+          <KPICard label={<>Taxa Média PF <InfoTooltip term="Spread" side="bottom" /></>}
+            value={data ? latest(data.pfTaxa) : null} unit="% a.a." color="#fb923c" />
+          <KPICard label={<>Inadimplência PF <InfoTooltip term="Inadimplência" /></>}
+            value={data ? latest(data.pfInadim) : null} unit="%" sub="> 90 dias" color="#f87171" />
           <KPICard label={<>Carteira Total SFN</>}
-            value={data ? latest(data.carteiraTotal) : null} unit="R$ bi" color="#60a5fa" />
-          <KPICard label={<>Inadimplência Total <InfoTooltip term="Inadimplência" /></>}
-            value={data ? latest(data.inadimTotal) : null} unit="%" sub="> 90 dias" color="#f87171" />
-          <KPICard label={<>Taxa Média Total <InfoTooltip term="Spread" side="bottom" /></>}
-            value={data ? latest(data.taxaTotal) : null} unit="% a.a." color="#fb923c" />
-          <KPICard label={<>Inadimplência PF <InfoTooltip term="Inadimplência" side="bottom" /></>}
-            value={data ? latest(data.inadimPF) : null} unit="%" sub="Pessoas Físicas" color="#f472b6" />
+            value={data ? latest(data.carteiraTotal) : null} unit="R$ bi" sub="PF + PJ" color="#a78bfa" />
         </div>
       </section>
 
-      {/* ── Visão Geral do SFN ── */}
+      {/* ── Crédito Total PF — grid 2×2 ── */}
       <section className="mb-14">
-        <h2 className="text-lg font-semibold text-slate-300 mb-1">Visão Geral do SFN</h2>
-        <p className="text-xs text-slate-500 mb-6">Últimos 5 anos · dados mensais · Fonte: BCB/SGS</p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="flex items-baseline gap-3 mb-1">
+          <span className="w-3 h-3 rounded-full flex-shrink-0 mt-1 bg-blue-400" />
+          <h2 className="text-lg font-semibold text-slate-200">Crédito e Financiamento Total — Pessoas Físicas</h2>
+          {!loading && (
+            <span className="text-xs text-slate-500">
+              Saldo: {fmtBi(latest(data.pfSaldo))}
+              {` · Taxa: ${latest(data.pfTaxa)?.toFixed(2)}% a.a.`}
+              {` · Inadimpl.: ${latest(data.pfInadim)?.toFixed(2)}%`}
+            </span>
+          )}
+        </div>
+        <p className="text-xs text-slate-500 mb-5 ml-6">Todas as modalidades · Recursos livres + direcionados · Últimos 5 anos · BCB/SGS</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {loading ? (
-            <><Skeleton /><Skeleton /><Skeleton /></>
+            <><Skeleton /><Skeleton /><Skeleton /><Skeleton /></>
           ) : (
             <>
-              <SingleLineChart data={data.carteiraPF} label="Carteira PF" unit="R$ bi" color="#60a5fa" />
-              <SingleLineChart data={data.inadimPF}   label="Inadimplência PF" unit="%" color="#f87171" />
-              <SingleLineChart data={data.taxaPF}     label="Taxa Média PF" unit="% a.a." color="#fb923c" />
+              <SingleLineChart data={data.pfConcessoes} label="Concessões"          unit="R$ mi"   color="#60a5fa" />
+              <SingleLineChart data={data.pfSaldo}      label="Saldo da Carteira"   unit="R$ bi"   color="#60a5fa" />
+              <SingleLineChart data={data.pfTaxa}       label="Taxa Média de Juros" unit="% a.a."  color="#fb923c" />
+              <SingleLineChart data={data.pfInadim}     label="Inadimplência (> 90 dias)" unit="%" color="#f87171" />
             </>
           )}
         </div>
