@@ -6,7 +6,9 @@ import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis,
   CartesianGrid, Tooltip, Legend,
 } from 'recharts'
-import { SGSPoint, MultiSeries } from '@/lib/setorialData'
+import { SGSPoint } from '@/lib/setorialFetch'
+
+type MultiSeries = { label: string; color: string; data: SGSPoint[] }[]
 
 // ── Tooltip ──────────────────────────────────────────────────────
 
