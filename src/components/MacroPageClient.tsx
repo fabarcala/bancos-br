@@ -30,7 +30,7 @@ export default function MacroPageClient() {
     <div>
       {/* Hero */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-1">Boletim Focus: Projeções Macroeconômicas</h1>
+        <h1 className="text-3xl font-bold text-white mb-1">Boletim Focus — Projeções e Histórico Macroeconômico</h1>
         <p className="text-slate-400 text-lg mb-2">Mediana das expectativas de mercado · Banco Central do Brasil</p>
 
         {/* Badge + data */}

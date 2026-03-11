@@ -4,7 +4,7 @@ import MacroPageClient from '@/components/MacroPageClient'
 const CANONICAL = 'https://bancos-app.vercel.app/boletim-focus'
 
 export const metadata: Metadata = {
-  title: 'Boletim Focus — Projeções e Histórico Macroeconômico',
+  title: 'Boletim Focus — Projeções de Mercado: Selic, IPCA, PIB, Câmbio',
   description: 'Projeções do Boletim Focus atualizadas toda segunda-feira: IPCA, Selic, PIB, Câmbio, IGP-M e mais. Mediana dos analistas com histórico.',
   alternates: { canonical: CANONICAL },
 }

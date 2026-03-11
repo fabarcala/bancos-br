@@ -113,10 +113,8 @@ export default function SetorialPageClient() {
     <div>
       {/* Hero */}
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-1">
-          Dados Setoriais PF — Crédito por Modalidade
-        </h1>
-        <p className="text-slate-400 text-lg mb-2">Concessões, saldo, taxa de juros e inadimplência · Pessoas Físicas</p>
+        <h1 className="text-3xl font-bold text-white mb-1">Indicadores Setoriais do SFN — Crédito, Inadimplência e Juros</h1>
+        <p className="text-slate-400 text-lg mb-2">Concessões, saldo, taxa de juros e inadimplência por modalidade · Pessoas Físicas</p>
 
         <div className="flex items-center gap-3 mb-4">
           <span className="inline-flex items-center gap-1.5 bg-blue-950/60 border border-blue-800/50 text-blue-300 text-xs font-medium px-3 py-1 rounded-full">
