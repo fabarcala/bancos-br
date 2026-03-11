@@ -6,9 +6,12 @@ import bradecoRaw from '../../../data/bradesco_historico.json'
 import sanRaw     from '../../../data/santander_historico.json'
 import bvRaw      from '../../../data/bv_historico.json'
 
+const CANONICAL = 'https://bancos-app.vercel.app/ranking'
+
 export const metadata: Metadata = {
   title: 'Ranking dos Bancos Brasileiros — ROAE, Inadimplência, Lucro | 4T25',
-  description: 'Veja quais bancos lideram em rentabilidade, eficiência, inadimplência e lucro no 4T25. Ranking de Itaú, Bradesco, Santander e BV com dados dos earnings releases.',
+  description: 'Ranking por indicador financeiro dos bancos — rentabilidade, inadimplência, eficiência, lucro líquido; 4T25.',
+  alternates: { canonical: CANONICAL },
 }
 
 const BANCO_COLORS: Record<string, string> = {
@@ -119,21 +122,22 @@ export default function RankingPage() {
         <h1 className="text-3xl font-bold text-white mb-1">Ranking dos Bancos — {LATEST}</h1>
         <p className="text-slate-400 text-lg mb-2">Destaque por Indicador Financeiro</p>
 
-        {/* Badge */}
+        {/* Badge padronizado */}
         <div className="flex items-center gap-3 mb-4">
           <span className="inline-flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-800/50 text-emerald-300 text-xs font-medium px-3 py-1 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-            Dados {LATEST} · Earnings releases
+            Dados até {LATEST} · Earnings releases
           </span>
         </div>
 
-        {/* Bloco de texto indexável */}
-        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl">
-          Ranking trimestral dos principais bancos brasileiros por indicador financeiro.
-          Compare rentabilidade (ROAE), inadimplência, eficiência operacional, capital regulatório (Basileia III),
-          lucro líquido e crescimento de carteira de Itaú, Bradesco, Santander e BV.
-          Dados do {LATEST}, extraídos dos earnings releases gerenciais/recorrentes.
+        {/* Bloco indexável */}
+        <p className="text-slate-400 text-sm leading-relaxed max-w-4xl mb-1">
+          Ranking por indicador financeiro dos principais bancos brasileiros — rentabilidade (ROAE),
+          inadimplência, eficiência operacional, capital regulatório (Basileia III), lucro líquido
+          e crescimento de carteira. Dados de Itaú, Bradesco, Santander e BV, extraídos dos
+          earnings releases gerenciais/recorrentes do {LATEST}.
         </p>
+        <p className="text-slate-500 text-xs mb-2">Fonte: Earnings releases oficiais · Itaú, Bradesco, Santander, BV · Dados até {LATEST}</p>
       </div>
 
       {/* Grid */}

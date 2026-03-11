@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import SetorialPageClient from '@/components/SetorialPageClient'
 
+const CANONICAL = 'https://bancos-app.vercel.app/setorial'
+
 export const metadata: Metadata = {
-  title: 'Dados Setoriais PF — Crédito, Inadimplência e Taxas por Modalidade | BancosBR',
-  description: 'Acompanhe a evolução mensal de concessões, saldo da carteira, taxa de juros e inadimplência por modalidade de crédito para Pessoas Físicas no Brasil. Dados do Banco Central do Brasil.',
+  title: 'Indicadores do SFN — Crédito, Inadimplência e Taxas de Juros',
+  description: 'Evolução mensal da carteira de crédito, inadimplência e taxas de juros do SFN por modalidade. Dados do Banco Central do Brasil.',
+  alternates: { canonical: CANONICAL },
 }
 
 export default function SetorialPage() {

@@ -2,8 +2,12 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Link from 'next/link'
 export const metadata: Metadata = {
-  title: 'Bancos BR | Estatísticas do Sistema Financeiro',
-  description: 'Dashboard com resultados e indicadores dos principais bancos brasileiros',
+  title: {
+    default: 'BancosBR — Estatísticas do Sistema Financeiro Nacional',
+    template: '%s | BancosBR',
+  },
+  description: 'Dados e gráficos do sistema financeiro brasileiro: Boletim Focus, resultados de bancos, crédito setorial e indicadores do SFN.',
+  metadataBase: new URL('https://bancos-app.vercel.app'),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
