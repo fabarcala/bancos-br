@@ -130,7 +130,7 @@ def main():
     historico["curvas"] = historico["curvas"][-MAX_CURVAS:]
 
     # Atualiza metadados
-    todos_vertices = sorted({du for c in historico["curvas"] for du in c["curva"]})
+    todos_vertices = sorted({int(du) if isinstance(du, str) else du for c in historico["curvas"] for du in c["curva"]})
     historico["vertices"] = todos_vertices
     historico["labels"]   = {str(du): label_du(du) for du in todos_vertices}
     historico["updated"]  = datetime.now().strftime("%d/%m/%Y %H:%M")
