@@ -3,7 +3,9 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 import CurvaJurosClient from '@/components/CurvaJurosClient'
 
-export const revalidate = 3600
+// Revalidate a cada 24h (86400s)
+// GitHub Actions atualiza a curva diariamente, então cache de 1 dia é seguro
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: 'Curva de Juros — DI Prefixado (ETTJ) | BancosBR',

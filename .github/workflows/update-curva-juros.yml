@@ -2,8 +2,10 @@ name: Atualizar Curva de Juros (ANBIMA)
 
 on:
   schedule:
-    # Roda de seg a sex às 21h BRT (00h UTC) — após fechamento do mercado
-    - cron: '0 0 * * 1-5'
+    # Roda todos os dias às 21h BRT (00h UTC) — após fechamento do mercado
+    - cron: '0 0 * * *'
+    # Roda também às 09h BRT (12h UTC) como fallback (caso o primeiro falhe ou haja feriado)
+    - cron: '0 12 * * *'
   workflow_dispatch:  # permite rodar manualmente
 
 jobs:
