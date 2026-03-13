@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 export const metadata: Metadata = {
   title: {
     default: 'BancosBR — Estatísticas do Sistema Financeiro Nacional',
@@ -14,19 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body className="min-h-screen bg-gray-950 text-slate-100">
-        {/* Header */}
-        <header className="border-b border-slate-800 bg-gray-950/95 backdrop-blur sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center">
-            <nav className="flex-1 flex items-center justify-center gap-6 text-sm text-slate-400">
-              <Link href="/boletim-focus" className="hover:text-white transition-colors">Boletim Focus</Link>
-              <Link href="/curva-juros" className="hover:text-white transition-colors">Curva de Juros</Link>
-              <Link href="/setorial" className="hover:text-white transition-colors">Setorial PF</Link>
-              <Link href="/bancos" className="hover:text-white transition-colors">Bancos</Link>
-              <Link href="/graficos" className="hover:text-white transition-colors">Gráficos</Link>
-              <Link href="/ranking" className="hover:text-white transition-colors">Ranking</Link>
-            </nav>
-          </div>
-        </header>
+        <Navbar />
 
         {/* Main */}
         <main className="max-w-full px-4 sm:px-6 py-8">
