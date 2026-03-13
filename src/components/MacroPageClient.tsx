@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { MacroChartGrid } from './MacroChart'
 import { fetchMacroDataClient, type MacroChartSeries } from '@/lib/macroFetch'
+import FocusEvolucao from './FocusEvolucao'
 
 function Skeleton({ height = 200 }: { height?: number }) {
   return <div className="animate-pulse bg-slate-800/60 rounded-xl w-full" style={{ height }} />
@@ -82,6 +83,9 @@ export default function MacroPageClient() {
           : <MacroChartGrid series={chartSeries} />
         }
       </section>
+
+      {/* Evolução semanal */}
+      <FocusEvolucao />
     </div>
   )
 }
