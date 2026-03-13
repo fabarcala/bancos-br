@@ -10,7 +10,6 @@ const links = [
   { href: '/setorial',      label: 'Setorial PF' },
   { href: '/bancos',        label: 'Bancos' },
   { href: '/graficos',      label: 'Gráficos' },
-  { href: '/ranking',       label: 'Ranking' },
 ]
 
 export default function Navbar() {
