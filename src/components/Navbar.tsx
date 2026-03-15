@@ -7,6 +7,7 @@ import { useState } from 'react'
 const links = [
   { href: '/boletim-focus', label: 'Boletim Focus' },
   { href: '/curva-juros',   label: 'Curva de Juros' },
+  { href: '/renda-plus',    label: 'Renda+ 2064' },
   { href: '/setorial',      label: 'Setorial PF' },
   { href: '/bancos',        label: 'Bancos' },
   { href: '/graficos',      label: 'Gráficos' },
